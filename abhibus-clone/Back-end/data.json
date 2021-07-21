@@ -1,27 +1,26 @@
 [
 	{
-		"leaving_from": "hyderabad",
-		"going_to": "tirupathi",
-		"date_of_journey": "",
-		"date_of_return": "",
-		"price": 500,
-		"no_of_seats": 34,
-		"nearby":"pandas"
-		"dapature_time": "",
-		"arrivial_time": "",
-		"total_time": "13",
-		"rating": "4",
-		"no_of_rating": "1234",
-		"ac": true,
-		"non_ac": true,
-		"seater": true,
-		"sleeper": true,
-		"bus_patners": ["apsrtc", "orange"],
-		"travel_names": [""],
-		"bording_point": [""],
-		"dropping_point": [""],
-		"price_range": "",
-		"is_avaible": true,
-		"is_covid_safe": true
+		"depart_from": "kolkata",
+		"going_to": "Delhi",
+		"owned_company": "Masai Benz Travels Pvt Ltd.",
+		"departure_time": "4:30",
+		"departure_half": "PM",
+		"departure_type": "Before 6 am",
+		"total_duration": "38:15",
+		"arrival_time": "6:45",
+		"arrival_type": "After 6 pm",
+		"arrival_half": "AM",
+		"bus_type": ["Sleeper", "AC"],
+		"price_per_person": 3500,
+		"seat_capacity": 60,
+		"lower_deck": 40,
+		"upper_deck": 20,
+		"available": true,
+		"boarding_points": "city_name_id"
+	},
+
+	{
+		"city_name": "Hyderabad",
+		"junctions": ["ammerpet", "nothing"]
 	}
 ]
