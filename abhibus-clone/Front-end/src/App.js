@@ -1,10 +1,10 @@
-import { Navbar } from './Components/Navbar/Navbar';
+import { Routes } from './Routes/Routes';
 
 function App() {
   return (
-    <div>
-      <Navbar/>
-    </div>
+    <>
+      <Routes />
+    </>
   );
 }
 
