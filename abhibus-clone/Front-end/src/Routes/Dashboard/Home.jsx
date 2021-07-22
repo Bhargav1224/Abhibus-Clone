@@ -1,8 +1,21 @@
 import React from "react";
-import { BusBook, TravelOptions, Heading, Opts,ImgChange } from "./Home.styled.js";
+import {
+  BusBook,
+  TravelOptions,
+  Heading,
+  Opts,
+  ImgChange,
+  BusImg,
+  OffersDiv,
+  SumLines,
+  OffersView,
+  HeadingOffers
+} from "./Home.styled.js";
 import { TextField, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Container } from "@material-ui/core";
+import { OffersCarausel } from "./OffersCarausel.jsx";
+import { AgencyCar } from "./AgencyCar.jsx";
 
 const useStyles = makeStyles({
   inp: { border: "0.5px solid grey" },
@@ -45,6 +58,30 @@ export function Home() {
           </Button>
         </Container>
       </BusBook>
+      <div>
+        <BusImg src="https://static.abhibus.com/img/newlogos/bus-seach-bg-new.jpg" />
+      </div>
+      <OffersDiv>
+        <SumLines>
+          <HeadingOffers>AbhiBus Offers</HeadingOffers>
+          <OffersView>
+            <div>All Offers</div>
+            <div>Bus offers</div>
+            <div>View All</div>
+          </OffersView>
+        </SumLines>
+        <OffersCarausel />
+      </OffersDiv>
+      <br />
+      <br />
+      <OffersDiv>
+        <SumLines>
+          <HeadingOffers>Book SRTC (State Road Transport Corporation) bus tickets at AbhiBus</HeadingOffers>
+          <br />
+          <br />
+        </SumLines>
+        <AgencyCar />
+      </OffersDiv>
     </div>
   );
 }
