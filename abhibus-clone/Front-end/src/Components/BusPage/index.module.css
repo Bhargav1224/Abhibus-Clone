@@ -36,6 +36,9 @@ body{
     gap: 30px;
     background: url("https://static.abhibus.com/img/diwali/web/bg.png") no-repeat center top !important;
 }
+
+/* ------------------------------------filter Left CSS Start------------------------------- */
+
 .filtersBody{
     width: 250px;
 
@@ -138,6 +141,13 @@ background-color: rgb(248,248,248);
     color: rgb(245, 52, 52);
     cursor: pointer;
 }
+
+/* --------------------------------Filter Left CSS End--------------------------------- */
+
 .topImg{
     margin-top: 20px;
 }
+/* .cardBody{
+    height: 120px;
+    background-color: aqua;
+} */
