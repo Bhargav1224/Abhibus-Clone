@@ -49,9 +49,7 @@ export const Card = () => {
             <button>
             Select Seat 
             </button>
-          {/* <Button variant="contained" color="secondary">
-            Select Seat
-          </Button> */}
+      
         </div>
       </div>
     </div>

@@ -5,7 +5,6 @@ const travelAgencySchema = new mongoose.Schema({
     boarding_locations: [{ type: String, required: true }],
     dropping_locations: [{ type: String, required: true }],
     
-    
 
 }, {
     versionKey: false,

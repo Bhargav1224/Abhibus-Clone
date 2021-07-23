@@ -67,7 +67,8 @@ export const FilterLeft = () => {
                   <div>Clear(0)</div>
                 </div>
                 <div>
-
+                    fdvdfdfvfdgdgfd
+                    <div>erfrref</div>
                 </div>
             </div>
           </div>
