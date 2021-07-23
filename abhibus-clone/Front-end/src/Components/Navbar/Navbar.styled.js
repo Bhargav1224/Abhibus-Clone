@@ -5,11 +5,12 @@ import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 
 export const Nav = styled.div`
-  width: 100vw;
+  width: 98.2vw;
   background: #efefef;
   border-bottom: 1px solid #ccc;
   display: flex;
   position: relative;
+  margin-top: -8px;
   justify-content: space-between;
 `;
 export const Linked = styled(Link)`
