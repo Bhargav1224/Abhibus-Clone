@@ -1,12 +1,12 @@
 
-import './App.css';
-import { Index } from './Components/BusPage/index';
+import { Routes } from './Routes/Routes';
 
 function App() {
   return (
-    <div>
-      <Index/>
-    </div>
+    <>
+      <Routes />
+    </>
+
   );
 }
 
