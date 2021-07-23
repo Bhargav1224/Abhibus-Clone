@@ -25,16 +25,18 @@ const busDetailsFail = (er) => {
 	};
 };
 
-export const getBusDetails = (depart, arrival, date) => (dispatch) => {
-	dispatch(busDetailsRequest());
-	axios
-		.get(
-			`http://localhost:8000/routes/services/?from=${depart}&&to=${arrival}&&date=${date}`
-		)
+export const getBusDetails =
+	({ leaving, going, date }) =>
+	(dispatch) => {
+		dispatch(busDetailsRequest());
+		axios
+			.get(
+				`http://localhost:8000/routes/services/?from=${leaving}&&to=${going}&&date=${date}`
+			)
 
-		.then((res) => {
-			console.log(res.data);
-			dispatch(busDetailsSuccess(res.data));
-		})
-		.catch((err) => dispatch(busDetailsFail(SyntaxError)));
-};
+			.then((res) => {
+				console.log(res.data);
+				dispatch(busDetailsSuccess(res.data));
+			})
+			.catch((err) => dispatch(busDetailsFail(SyntaxError)));
+	};
