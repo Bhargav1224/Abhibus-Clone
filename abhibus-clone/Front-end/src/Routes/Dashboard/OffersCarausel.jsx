@@ -28,7 +28,7 @@ export function OffersCarausel() {
       };
     
   return (
-    <Carousel responsive={responsive} infinite={true} swipeable={true} draggable={true} showDots={true}>
+    <Carousel arrows={false} responsive={responsive} infinite={true} swipeable={true} draggable={true} showDots={true}>
       <div>
         <ImgCar src="https://static.abhibus.com/busgallery/offerbanners/Jul2021/08/1625726641/476x220.png" />
       </div>
