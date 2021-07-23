@@ -45,8 +45,8 @@ body{
 }
 .filtersBody>div:first-child{
   display: flex;
-  gap: 140px;
-  font-size: 16px;
+  gap: 130px;
+  font-size: 17px;
   font-weight: 600;
   color: rgb(49, 49, 49);
   margin:15px 0 0 0;
@@ -73,6 +73,7 @@ body{
     padding: 10p 0 20px 0;
 height: 110px;
 background-color: rgb(248,248,248);
+border: 1px solid rgb(202, 202, 202);
 }
 .BusType>div:first-child{
     display: flex;
@@ -92,7 +93,7 @@ background-color: rgb(248,248,248);
 }
 .BusTypeImage{
     display: flex;
-    padding: 0px 15px 10px 15px;
+    padding: 0px 15px 15px 15px;
 }
 .BusTypeImage>div{
     height: 30px;
@@ -122,13 +123,13 @@ background-color: rgb(248,248,248);
 }
 .BusPartner{
     padding: 10p 0 20px 0;
-    height: 110px;
     background-color: rgb(248,248,248);
+    border: 1px solid rgb(202, 202, 202);
 }
 .BusPartner>div:first-child{
     display: flex;
     padding: 10px 12px 10px 12px;
-    gap: 80px;
+    gap: 55px;
 }
 .BusPartner>div:first-child>div:first-child{
     font-size: 16px;
@@ -140,8 +141,72 @@ background-color: rgb(248,248,248);
     font-weight: 500;
     color: rgb(245, 52, 52);
     cursor: pointer;
+    text-align: right;
+    
+    
+}
+.BusPartnerMenu{
+    /* display: none; */
+    /* height: 100px; */
+    width: 212px;
+    margin: 0 12px 10px 12px;
+    border: 1px solid rgb(216, 216, 216);
+    padding: 10px 0 10px 10px;
+    background-color: white;
+    margin-top: -5px;
+}
+.BusPartnerMenu>div{
+    font-size: 14px;
+    color: rgb(88, 88, 88);
+    gap: 2px;
+    display: flex;
+
 }
 
+.DepartureType{
+    padding: 10p 0 20px 0;
+/* height: 110px; */
+background-color: rgb(248,248,248);
+border: 1px solid rgb(202, 202, 202);
+}
+.DepartureType>div:first-child{
+    display: flex;
+    padding: 10px 12px 10px 12px;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+.DepartureType>div:first-child>div:first-child{
+    font-size: 16px;
+    font-weight: 600;
+    color: rgb(49, 49, 49);
+}
+.DepartureType>div:first-child>div:nth-child(2){
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(245, 52, 52);
+    cursor: pointer;
+}
+
+.DepartureTypeImage{
+  display:"grid";
+  padding: 0px 15px 15px 15px;
+}
+.DepartureTypeImage>div{
+    height: 35px;
+    width: 107px;
+  border-radius: 4PX;
+    justify-content: center;
+    text-align: center;
+    padding: 8px 0 15px 0;
+    cursor: pointer;
+    border: 0.001rem solid rgb(202, 202, 202);
+}
+.DepartureTypeImage>div>img{
+    width: 30px;
+}
+.DepartureTypeImage>div>div{
+    font-size: 10px;
+}
 
 /* --------------------------------Filter Left CSS End--------------------------------- */
 
