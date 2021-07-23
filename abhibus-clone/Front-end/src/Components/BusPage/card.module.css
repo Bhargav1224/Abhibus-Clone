@@ -1,0 +1,26 @@
+
+.card{
+    display: flex;
+    height: 120px;
+    background-color: rgb(253, 253, 253);
+    border-radius: 6px;
+    color: rgb(49, 49, 49);
+}
+.card:hover{
+    background-color: rgb(235, 233, 233);
+}
+.card>div:first-child>img{
+    width: 40px;
+    margin-top: 40px;
+    margin-left: 20px;
+}
+.card>div:nth-child(2)>ul{
+    font-size:  16px;
+    font-weight: 700;
+    line-height: 16px;
+}
+.card>div:nth-child(2)>ul>p{
+    font-size:  12px;
+    font-weight: 500;
+    line-height: 16px;
+}

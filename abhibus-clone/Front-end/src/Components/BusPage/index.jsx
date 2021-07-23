@@ -1,3 +1,4 @@
+import { Card } from "@material-ui/core";
 import React, { useState } from "react";
 import style from "./index.module.css";
 export const Index = () => {
@@ -12,6 +13,7 @@ export const Index = () => {
   const [typeSleeper, setTypeSleeper] = useState(false);
   const[busTypeCount,setbusTypeCount] = useState(0)
   // const [priceDrop,SetPriceDrop] = useState()
+ 
 const clearBusTypeFilter=()=>{
   setTypeAc(false)
   setTypeNonAc(false)
@@ -227,7 +229,14 @@ const clearBusTypeFilter=()=>{
             </div>
           </div>
         </div>
-        <div>card</div>
+        <div>
+          <div className={style.topImg}>
+            <img style={{width:"200px"}} src="https://static.abhibus.com/busgallery/offerbanners/Sep2020/10/top-banners-small-3.png" alt="" srcset="" />
+          </div>
+          <div className={style.cardBody}>
+                <Card/>
+          </div>
+        </div>
       </div>
     </div>
   );
