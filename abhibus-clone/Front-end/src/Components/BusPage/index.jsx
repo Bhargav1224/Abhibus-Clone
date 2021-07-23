@@ -11,6 +11,7 @@ export const Index = () => {
   const [typeSeater, setTypeSeater] = useState(false);
   const [typeSleeper, setTypeSleeper] = useState(false);
   const[busTypeCount,setbusTypeCount] = useState(0)
+  // const [priceDrop,SetPriceDrop] = useState()
 const clearBusTypeFilter=()=>{
   setTypeAc(false)
   setTypeNonAc(false)
@@ -176,7 +177,7 @@ const clearBusTypeFilter=()=>{
             <div className={style.PriceDrop}>
               <div>Price Drop</div>
               <div>
-                <input type="checkbox" name="" id="" />
+                <input  type="checkbox" name="" id="" />
               </div>
             </div>
             <div className={style.BusType}>
