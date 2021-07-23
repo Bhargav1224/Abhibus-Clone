@@ -1,0 +1,26 @@
+{
+        "serviceName": "Volvo A/C Semi Sleeper (2+2)",
+        "travelerAgentName": "zingbus",
+        "busTypeName": "VOLVO AC Semi Sleeper (2 + 2)",
+        "startTime": "18:20:00",
+        "arrivalTime": "08:10:00",
+        "seatFare": 678.00,
+        "providedSeatFare": 745.80,
+        "availableSeats": 27,
+        "discount": 67.80,
+        "travelTime": "13:50:00",
+        "AC": true,
+        "NONAC": false,
+        "VOLVO": true,
+        "Sleeper": true,
+        "singleseating": false
+    },
+
+
+    {"_id":{"$oid":"60f927f54d6be199782ff447"},
+    "sourceStationName":"Delhi",
+    "destinationStationName":"Manali",
+    "boardingPoints":["koramangla","banglore hub"],
+    "droppingPoint":["Hill station road","Main bus stand"],
+    "buses":["60f926514d6be199782ff43a","60f926514d6be199782ff43b"]
+    }
