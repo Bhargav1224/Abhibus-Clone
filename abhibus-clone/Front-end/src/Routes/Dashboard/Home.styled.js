@@ -1,9 +1,10 @@
 import styled from "styled-components"
+import {Link} from "react-router-dom"
 
 
 export const BusBook = styled.div`
 text-align: center;
-width:70%;
+width:85%;
 margin: auto;
 margin-top: 40px;
 position: relative;
@@ -22,17 +23,19 @@ justify-content:space-between;
 margin-bottom: 1.5rem!important;
 `
 
-export const Opts = styled.div`
-color:blackś;
+export const Opts = styled(Link)`
+color:black;
+text-decoration: none;
 padding:6px 10px;
 border-radius: 10px;
 font-size:19px;
 &:focus{
     background-color:#c60001;
+    color:white;
 }
 `
 export const ImgChange = styled.img`
-left: 24.4%;
+left: 27.7%;
 top:70.5%;
 position : absolute;
 width:30px;
