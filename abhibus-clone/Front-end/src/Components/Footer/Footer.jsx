@@ -4,7 +4,7 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import PinterestIcon from "@material-ui/icons/Pinterest";
 import YouTubeIcon from "@material-ui/icons/YouTube";
-import { Circle, FlexDiv, Social, FootCont, GridItems, Head1, Li,FlexCont2 } from "./Footer.styled";
+import { Circle, FlexDiv, Social, FootCont, GridItems, Head1, Li, FlexCont2,FlexCont3, FootCont2 } from "./Footer.styled";
 export function Footer() {
   return (
     <>
@@ -101,12 +101,55 @@ export function Footer() {
               <Li>Bus Booking Offers</Li>
             </ul>
           </div>
-              </GridItems>
-
-          </FootCont>
-          <FootCont2>
-              <FlexCont2></FlexCont2>
-          </FootCont2>
+        </GridItems>
+      </FootCont>
+      <FootCont2>
+        <FlexCont2>
+          <div>
+            Operators <span>|</span>
+          </div>
+          <div>
+            Routes <span>|</span>
+          </div>
+          <div>
+            Train Routes <span>|</span>
+          </div>
+          <div>
+            Offers <span>|</span>
+          </div>
+          <div>
+            Mobile <span>|</span>
+          </div>
+          <div>
+            About <span>|</span>
+          </div>
+          <div>
+            News <span>|</span>
+          </div>
+          <div>
+            Career <span>|</span>
+          </div>
+          <div>
+            Contact <span>|</span>
+          </div>
+          <div>
+            Abhibus Community <span>|</span>
+          </div>
+          <div>Booking Tips</div>
+        </FlexCont2>
+        <FlexCont3>
+          <div>
+            FAQs <span>|</span>
+          </div>
+          <div>
+            Terms <span>|</span>
+          </div>
+          <div>
+            Privacy <span>|</span>
+          </div>
+          <div>Agent Login</div>
+        </FlexCont3>
+      </FootCont2>
     </>
   );
 }
