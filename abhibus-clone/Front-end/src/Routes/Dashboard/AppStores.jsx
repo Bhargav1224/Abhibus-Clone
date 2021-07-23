@@ -38,6 +38,18 @@ export function AppStores() {
               <Ans>Games, offers, Free Rides and a lot more.</Ans>
             </div>
           </FlexData>
+          <FlexData>
+            <div>
+              <img src="https://static.abhibus.com/img/homepage/android.png" alt="android" />
+            </div>
+            <div>
+              <img src="https://static.abhibus.com/img/homepage/ios-1.png" alt="apple" />
+            </div>
+          </FlexData>
+          <div>
+            <img src="https://static.abhibus.com/img/homepage/star.png" alt="ratings" />
+            <div><strong>4.5/5</strong> based on 1,02,251 reviews</div>
+          </div>
         </GridApp>
       </div>
     </StoreCont>
