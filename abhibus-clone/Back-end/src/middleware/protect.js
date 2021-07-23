@@ -16,7 +16,7 @@ const verifyToken = (token) => {
 const protect = async (req, res, next) => {
     const bearerToken = req.headers.authorization;
 
-    //If token is not present or not starting with Braer, then it is invalid
+    //If token is not present or not starting with Bearer, then it is invalid
     if (!bearerToken || !bearerToken.startsWith("Bearer")) {
         return res
             .status(400)
