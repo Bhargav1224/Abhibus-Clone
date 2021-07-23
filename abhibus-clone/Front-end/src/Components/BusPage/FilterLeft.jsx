@@ -1,6 +1,58 @@
 import React, { useState } from "react";
 import style from "./index.module.css";
+import { makeStyles,withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import Slider from "@material-ui/core/Slider";
 
+const useStyles = makeStyles({
+  root: {
+    width: 180,
+  },
+});
+
+const AirbnbSlider = withStyles({
+  root: {
+    color: "rgb(220,53,69)",
+    height: 3,
+    padding: "13px 0"
+  },
+  thumb: {
+    height: 18,
+    width: 18,
+    backgroundColor: "#fff",
+    border: "2px solid rgb(220,53,69)",
+    marginTop: -6,
+    marginLeft: -2,
+    boxShadow: "white 0 2px 2px",
+    "&:focus, &:hover, &$active": {
+      boxShadow: "white 0 2px 3px 1px"
+    },
+    "& .bar": {
+      // display: inline-block !important;
+      height: 9,
+      width: 1,
+      backgroundColor: "white",
+      marginLeft: 1,
+      marginRight: 1
+    }
+  },
+
+  track: {
+    height: 5
+  },
+  rail: {
+    color: "black",
+    opacity: 1,
+    height: 5
+  }
+})(Slider);
+function AirbnbThumbComponent(props) {
+  return <span {...props}></span>;
+}
+
+function valuetext(value) {
+  return `${value}`;
+}
 function callback(key) {
   console.log(key);
 }
@@ -35,7 +87,7 @@ export const FilterLeft = () => {
   const [dropDown1, setdropDown1] = useState(true);
   const [dropDown2, setdropDown2] = useState(true);
   const [dropDown3, setdropDown3] = useState(true);
-  const [checked,setChecked]= useState(false)
+  // const [checked,setChecked]= useState(false)
   const clearBusTypeFilter = () => {
     setTypeAc(false);
     setTypeNonAc(false);
@@ -56,12 +108,31 @@ export const FilterLeft = () => {
     setTypeNight(false);
     setdepartureTypeCount(0);
   };
-  const [checkedCount,setCheckedCount] = useState(0)
-const handleCheck = (status)=>{
-    status?setCheckedCount(checkedCount+1):setCheckedCount(checkedCount-1)
-    console.log(checkedCount)
-  
-}
+  const [boardingPointCount, setboardingPointCount] = useState(0);
+  const handleboardingPointCount = (status) => {
+    status
+      ? setboardingPointCount(boardingPointCount + 1)
+      : setboardingPointCount(boardingPointCount - 1);
+  };
+  const [BusPartnerCount, setBusPartnerCount] = useState(0);
+  const handleBusPartnerCount = (status) => {
+    status
+      ? setBusPartnerCount(BusPartnerCount + 1)
+      : setBusPartnerCount(BusPartnerCount - 1);
+  };
+  const [DroppingPointCount, setDroppingPointCount] = useState(0);
+  const handleDroppingPointCount = (status) => {
+    status
+      ? setDroppingPointCount(DroppingPointCount + 1)
+      : setDroppingPointCount(DroppingPointCount - 1);
+  };
+
+  const classes = useStyles();
+  const [value, setValue] = React.useState([20, 37]);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   return (
     <div className={style.filtersBody}>
@@ -159,7 +230,9 @@ const handleCheck = (status)=>{
               />
             </div>
           </div>
-          <div>Clear(0)</div>
+          <div onClick={() => setBusPartnerCount(0)}>
+            Clear({BusPartnerCount})
+          </div>
         </div>
         <div
           style={dropDown1 ? { display: "block" } : { display: "none" }}
@@ -169,7 +242,14 @@ const handleCheck = (status)=>{
             return (
               <div>
                 <div>
-                  <input type="checkbox" name="" id="" />
+                  <input
+                    onChange={(e) => {
+                      handleBusPartnerCount(e.target.checked);
+                    }}
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
                 </div>
                 <div>{item.title}</div>
               </div>
@@ -197,7 +277,9 @@ const handleCheck = (status)=>{
               />
             </div>
           </div>
-          <div>Clear(0)</div>
+          <div onClick={() => setboardingPointCount(0)}>
+            Clear({boardingPointCount})
+          </div>
         </div>
         <div
           style={dropDown2 ? { display: "block" } : { display: "none" }}
@@ -207,7 +289,14 @@ const handleCheck = (status)=>{
             return (
               <div>
                 <div>
-                  <input type="checkbox" name="" id="" />
+                  <input
+                    onChange={(e) => {
+                      handleboardingPointCount(e.target.checked);
+                    }}
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
                 </div>
                 <div>{item.title}</div>
               </div>
@@ -235,17 +324,25 @@ const handleCheck = (status)=>{
               />
             </div>
           </div>
-          <div onClick={()=>setCheckedCount(0)}>Clear({checkedCount})</div>
+          <div onClick={() => setDroppingPointCount(0)}>
+            Clear({DroppingPointCount})
+          </div>
         </div>
         <div
           style={dropDown3 ? { display: "block" } : { display: "none" }}
           className={style.BusPartnerMenu}
         >
-          {BordingPoints.map((item,i) => {
+          {BordingPoints.map((item, i) => {
             return (
               <div>
                 <div>
-                  <input onChange={(e)=>{handleCheck(e.target.checked)}}   type="checkbox" name=""  />
+                  <input
+                    onChange={(e) => {
+                      handleDroppingPointCount(e.target.checked);
+                    }}
+                    type="checkbox"
+                    name=""
+                  />
                 </div>
                 <div>{item.title}</div>
               </div>
@@ -261,7 +358,10 @@ const handleCheck = (status)=>{
               Clear({departureTypeCount})
             </div>
           </div>
-          <div style={{display:"grid",gridTemplate:"60px / 107px auto"}} className={style.DepartureTypeImage}>
+          <div
+            style={{ display: "grid", gridTemplate: "60px / 107px auto" }}
+            className={style.DepartureTypeImage}
+          >
             <div
               onClick={() => {
                 setTypeMorning(!typeMorning);
@@ -270,7 +370,9 @@ const handleCheck = (status)=>{
                   : setdepartureTypeCount(departureTypeCount + 1);
               }}
               className={
-                typeMorning ? style.BusTypeImageClick : style.BusTypeImageNotClick
+                typeMorning
+                  ? style.BusTypeImageClick
+                  : style.BusTypeImageNotClick
               }
             >
               <img src="https://cdn.iconscout.com/icon/premium/png-64-thumb/sunrise-101-584112.png" />
@@ -284,7 +386,9 @@ const handleCheck = (status)=>{
                   : setdepartureTypeCount(departureTypeCount + 1);
               }}
               className={
-                typeAfternoon ? style.BusTypeImageClick : style.BusTypeImageNotClick
+                typeAfternoon
+                  ? style.BusTypeImageClick
+                  : style.BusTypeImageNotClick
               }
             >
               <img src="https://cdn.iconscout.com/icon/premium/png-64-thumb/sun-2086492-1767677.png" />
@@ -314,14 +418,35 @@ const handleCheck = (status)=>{
                   : setdepartureTypeCount(departureTypeCount + 1);
               }}
               className={
-                typeNight
-                  ? style.BusTypeImageClick
-                  : style.BusTypeImageNotClick
+                typeNight ? style.BusTypeImageClick : style.BusTypeImageNotClick
               }
             >
               <img src="https://cdn.iconscout.com/icon/premium/png-64-thumb/half-moon-2893731-2400600.png" />
               <div>AFTER 11PM</div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div className={style.PriceRange}>
+        <div>Price Range</div>
+        <div>₹ {value.toString().slice(0,4)} - ₹ {value.toString().slice(4)}</div>
+        <div className={classes.root}>
+         
+          <div className={classes.root}>
+            <AirbnbSlider
+            min={713}
+            onChange={handleChange}
+            max={3000}
+            value={value}
+            getAriaValueText={valuetext}
+              valueLabelDisplay="auto"
+              aria-labelledby="range-slider"
+              ThumbComponent={AirbnbThumbComponent}
+              getAriaLabel={(index) =>
+                index === 0 ? "Minimum price" : "Maximum price"
+              }
+              
+            />
           </div>
         </div>
       </div>
