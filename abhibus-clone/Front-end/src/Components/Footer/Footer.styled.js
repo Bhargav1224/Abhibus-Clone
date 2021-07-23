@@ -44,3 +44,26 @@ export const Li = styled.li`
       color: red;
   }
 `;
+export const FlexCont2 = styled.div`
+display: flex;
+justify-content:space-evenly;
+width:80%;
+margin: auto;
+font-size:14px;
+margin-bottom: 10px;
+
+`
+export const FlexCont3 = styled.div`
+display: flex;
+justify-content:space-between;
+width:20%;
+text-align:right;
+margin-left: 66%;
+font-size:14px;
+`
+export const FootCont2 = styled.div`
+    background: #f0f0f0;
+    border-top: 1px solid #dee2e6!important;
+    width: 100%;
+    padding: 10px;
+`
