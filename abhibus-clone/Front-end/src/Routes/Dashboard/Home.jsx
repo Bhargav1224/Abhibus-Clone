@@ -9,13 +9,17 @@ import {
   OffersDiv,
   SumLines,
   OffersView,
-  HeadingOffers
+  HeadingOffers,ImgBan,BannerDiv
 } from "./Home.styled.js";
 import { TextField, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Container } from "@material-ui/core";
 import { OffersCarausel } from "./OffersCarausel.jsx";
 import { AgencyCar } from "./AgencyCar.jsx";
+import { Covid } from "./Covid.jsx";
+import { AbhiData } from "./AbhiData.jsx";
+import { Faq } from "./Faq.jsx";
+import { AppStores } from "./AppStores.jsx";
 
 const useStyles = makeStyles({
   inp: { border: "0.5px solid grey" },
@@ -77,11 +81,16 @@ export function Home() {
       <OffersDiv>
         <SumLines>
           <HeadingOffers>Book SRTC (State Road Transport Corporation) bus tickets at AbhiBus</HeadingOffers>
-          <br />
-          <br />
         </SumLines>
         <AgencyCar />
       </OffersDiv>
+      <BannerDiv>
+        <ImgBan src="/abhicust.jpg" alt="banner"/>
+      </BannerDiv>
+      <Covid />
+      <AbhiData />
+      <Faq />
+      <AppStores/>
     </div>
   );
 }
