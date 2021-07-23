@@ -89,6 +89,7 @@ width:80%;
 margin: auto;
 border: 2px solid #efefef;
 padding: 1rem;
+margin-bottom: 1.5rem!important;
 `
 export const CovHeadline = styled.div`
 font-size:22px;
@@ -101,7 +102,67 @@ text-align: justify;
 `
 export const SumCov = styled.div`
 margin-bottom:1rem!important;
+font-size:16px;
+text-align:justify;
+color: #444444;
+`
+export const ListData = styled.li`
+margin-bottom:0.5rem!important;
+font-size:16px;
+text-align:justify;
+color: #444444;
 `
 export const Person = styled.div`
 
+`
+export const DataCont = styled.div`
+width:80%;
+margin: auto;
+border: 2px solid #efefef;
+padding: 1rem;
+margin-bottom: 1.5rem!important;
+`
+export const MainHead = styled.div`
+font-size:26px;
+font-weight:500;
+padding-bottom: 1rem!important;
+`
+export const QHead = styled.div`
+font-size:17px;
+font-weight: 600;
+`
+export const StoreCont = styled.div`
+display: grid;
+grid-template-columns: 32% 66%;
+gap: 2%;
+width:80%;
+margin: auto;
+border: 2px solid #efefef;
+padding: 1rem;
+margin-bottom: 1.5rem!important;
+`
+export const GridApp = styled.div`
+display: grid;
+grid-template-columns:repeat(2,1fr);
+`
+export const RedLine = styled.div`
+width:10px;
+height:60px;
+background-color:#c60001;
+`
+
+export const FlexData = styled.div`
+display: flex;
+justify-content: space-between;
+width: 85%;
+margin-bottom: 1.7rem!important;
+`
+export const HeadDt = styled.div`
+font-size:20px;
+font-weight: 600;
+`
+export const Ans = styled.div`
+width: 70%;
+font-size:17px ;
+text-align: justify;
 `

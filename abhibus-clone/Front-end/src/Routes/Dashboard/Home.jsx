@@ -17,6 +17,9 @@ import { Container } from "@material-ui/core";
 import { OffersCarausel } from "./OffersCarausel.jsx";
 import { AgencyCar } from "./AgencyCar.jsx";
 import { Covid } from "./Covid.jsx";
+import { AbhiData } from "./AbhiData.jsx";
+import { Faq } from "./Faq.jsx";
+import { AppStores } from "./AppStores.jsx";
 
 const useStyles = makeStyles({
   inp: { border: "0.5px solid grey" },
@@ -84,7 +87,10 @@ export function Home() {
       <BannerDiv>
         <ImgBan src="/abhicust.jpg" alt="banner"/>
       </BannerDiv>
-      <Covid/>
+      <Covid />
+      <AbhiData />
+      <Faq />
+      <AppStores/>
     </div>
   );
 }
