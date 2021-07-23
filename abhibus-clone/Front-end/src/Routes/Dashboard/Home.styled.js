@@ -49,7 +49,7 @@ cursor: pointer;
 export const OffersDiv = styled.div`
 width:80%;
 margin: 10px 10%;
-border: 0.5px solid grey;
+border: 2px solid #efefef;
 padding: 10px;
 `
 
@@ -68,8 +68,40 @@ width:25%;
 export const HeadingOffers = styled.div`
 font-size: 26px;
 font-weight:500;
+margin-bottom: 20px;
 `
 export const ImgAg = styled.img`
 width:70%;
 height:110px;
+`
+export const ImgBan = styled.img`
+width:100%;
+`
+export const BannerDiv = styled.div`
+width:85%;
+margin: auto;
+`
+export const GridCov = styled.div`
+display :grid;
+grid-template-columns: 65% 32%;
+gap: 1%;
+width:80%;
+margin: auto;
+border: 2px solid #efefef;
+padding: 1rem;
+`
+export const CovHeadline = styled.div`
+font-size:22px;
+font-weight: 600;
+margin-bottom: 1.5rem!important;
+`
+export const MainCov = styled.div`
+font-size:18px;
+text-align: justify;
+`
+export const SumCov = styled.div`
+margin-bottom:1rem!important;
+`
+export const Person = styled.div`
+
 `
