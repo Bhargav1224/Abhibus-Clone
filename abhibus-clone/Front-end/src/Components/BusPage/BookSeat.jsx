@@ -1,95 +1,285 @@
 import React from "react";
-import { SeatBook, SeatDetails, Container, SeatSelect, LadiesSeat, Upper, Lower } from "./BookSeat.styled";
-import SpeakerNotesIcon from "@material-ui/icons/SpeakerNotes";
-import AirlineSeatFlatOutlinedIcon from "@material-ui/icons/AirlineSeatFlatOutlined";
+import {
+  SeatBook,
+  SeatDetails,
+  Container,
+  SeatSelect,
+  LadiesSeat,
+  Upper,
+  Lower,
+  EachSeat,
+  Small,
+  Front,
+  UpperDiv,
+  Rear,LowerDiv,NotesIcon,Ava,Selected,ForLad,Unava,Options,OptFlex,Span,Jour,
+} from "./BookSeat.styled";
 import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles({
   booked: {
-    color: "grey"
+    backgroundColor: "grey"
   },
   notBooked: {
-    color: "white"
+    backgroundColor: "white"
   },
   selec: {
-    color: "green"
+    backgroundColor: "green"
   }
 });
+
 export function BookSeat() {
   const classes = useStyles();
-  const [selected, setSelected] = React.useState(false);
-  const [seats, setSeats] = React.useState([
-    { seatNo: 1, available: true, sel: false },
-    { seatNo: 2, available: true, sel: false },
-    { seatNo: 3, available: false, sel: false },
-    { seatNo: 4, available: true, sel: false },
-    { seatNo: 5, available: true, sel: false },
-    { seatNo: 6, available: true, sel: false },
-    { seatNo: 7, available: true, sel: false },
-    { seatNo: 8, available: true, sel: false },
-    { seatNo: 9, available: false, sel: false },
-    { seatNo: 10, available: true, sel: false },
-    { seatNo: 11, available: true, sel: false },
-    { seatNo: 12, available: true, sel: false },
-    { seatNo: 13, available: true, sel: false },
-    { seatNo: 14, available: true, sel: false },
-    { seatNo: 15, available: true, sel: false }
+  const [upperSeats, setUpperSeats] = React.useState([
+    { seatNo: 16, available: true, sel: false,fare:600 },
+    { seatNo: 17, available: true, sel: false,fare:600 },
+    { seatNo: 18, available: false, sel: false,fare:600 },
+    { seatNo: 19, available: true, sel: false,fare:600 },
+    { seatNo: 20, available: true, sel: false,fare:600 },
+    { seatNo: 21, available: true, sel: false,fare:600 },
+    { seatNo: 22, available: true, sel: false,fare:600 },
+    { seatNo: 23, available: true, sel: false,fare:600 },
+    { seatNo: 24, available: false, sel: false,fare:600 },
+    { seatNo: 25, available: true, sel: false,fare:600 },
+    { seatNo: 26, available: true, sel: false,fare:650 },
+    { seatNo: 27, available: true, sel: false,fare:650 },
+    { seatNo: 28, available: true, sel: false,fare:650 },
+    { seatNo: 29, available: true, sel: false,fare:650 },
+    { seatNo: 30, available: true, sel: false,fare:650 }
   ]);
-  const handleClick = () => {
+  const [lowerSeats, setLowerSeats] = React.useState([
+    { seatNo: 1, available: true, sel: false,fare:650 },
+    { seatNo: 2, available: true, sel: false,fare:650 },
+    { seatNo: 3, available: false, sel: false,fare:650 },
+    { seatNo: 4, available: true, sel: false,fare:650 },
+    { seatNo: 5, available: true, sel: false,fare:650 },
+    { seatNo: 6, available: true, sel: false,fare:650 },
+    { seatNo: 7, available: true, sel: false,fare:650 },
+    { seatNo: 8, available: true, sel: false,fare:650 },
+    { seatNo: 9, available: false, sel: false,fare:650 },
+    { seatNo: 10, available: true, sel: false,fare:650 },
+    { seatNo: 11, available: true, sel: false,fare:650 },
+    { seatNo: 12, available: true, sel: false,fare:650 },
+    { seatNo: 13, available: true, sel: false,fare:650 },
+    { seatNo: 14, available: true, sel: false,fare:650 },
+    { seatNo: 15, available: true, sel: false,fare:650 }
+  ]);
+  var count = 0;
+  upperSeats.map(el => {
+    return el.available===true&&count++
+  })
+  lowerSeats.map(el => {
+    return el.available===true&&count++
+  })
+  let [seatSelected,setSeatSelected] = React.useState([])
+  upperSeats.map(el => {
+    // console.log("Upper", el)
+    //  var  retVal = el.sel===true && seatSelected.push(el.seatNo)
+    console.log('selected in upper: ', seatSelected)
+    // return retVal
+  })
+  // lowerSeats.map(el => {
+  //   console.log("Lower", el)
+  //   // return el.sel==true&&seatSelected.push(el.seatNo)
+  //   var  retVal = el.sel===true && seatSelected.push(el.seatNo)
+  //   console.log('selected in lower: ', seatSelected)
+  //   return retVal
+  // })
+  const seatsTaken = seatSelected.join(",")
+  let total = 0;
+  upperSeats.map(el => {
+    return el.sel===true&&(total+=Number(el.fare))
+  })
+  lowerSeats.map(el => {
+    return el.sel===true&&(total+=Number(el.fare))
+  })
+
+  const handleUpperSeats = seatNo => {
     // setSelected(!selected)
-    seats.filter(el => {
-      console.log(el.seatNo);
-      // return el.seatNo === index + 1 ? { ...el, sel: !el.sel } : el
+// console.log(" Incoming seat number is ", seatNo)
+    var temp = upperSeats.map(el => {
+      var retVal = el.seatNo === seatNo ? { ...el, sel: !el.sel } : el;
+      console.log(retVal)
+      if (retVal.sel === true && el.seatNo === seatNo) {
+        setSeatSelected([...seatSelected, retVal.seatNo])
+      }
+      /*Selected to Deselect */
+      if (el.sel === true && retVal.sel == false  && el.seatNo === seatNo) {
+        var current = seatSelected.filter(seatNo => {
+          return seatNo!=retVal.seatNo
+        })
+
+        setSeatSelected(current)
+
+        
+      }
+      return retVal
     });
-    // setSeats(temp)
+    // console.log('selected seats 1: ', seatSelected)
+    setUpperSeats(temp);
+    // console.log(temp);
+    // console.log('selected seats 2: ', seatSelected)
+  };
+  // React.useEffect(() => {
+  //   handleUpperSeats()
+  // },[])
+  const handleLowerSeats = seatNo => {
+    // setSelected(!selected)
+    var temp = lowerSeats.map(el => {
+      var retVal = el.seatNo === seatNo ? { ...el, sel: !el.sel } : el;
+      console.log(retVal)
+      if (retVal.sel === true && el.seatNo === seatNo) {
+        setSeatSelected([...seatSelected, retVal.seatNo])
+      }
+      /*Selected to Deselect */
+      if (el.sel === true && retVal.sel == false  && el.seatNo === seatNo) {
+        var current = seatSelected.filter(seatNo => {
+          return seatNo!=retVal.seatNo
+        })
+
+        setSeatSelected(current)
+
+        
+      }
+      return retVal
+
+    });
+    setLowerSeats(temp);
+    // console.log(temp);
   };
   return (
     <Container>
       <SeatBook>
-        <div>10 Seats Available</div>
+        <div>{count} Seats Available</div>
         <div>Click on seat to select/deselect seat</div>
         <SeatSelect>
           <LadiesSeat>
             <div>
-              <SpeakerNotesIcon />
+              <NotesIcon />
             </div>
             <ul>
               <li> If Ladies seat is available, Single Lady traveller must choose the same</li>
               <li> Last row seats are reserved only for Male</li>
             </ul>
           </LadiesSeat>
-          <Upper>
-            {seats.map((el) => {
-              return (
-                <div key={el.seatNo}>
-                  {el.available ? (
-                    <AirlineSeatFlatOutlinedIcon
-                      onClick={handleClick}
-                      className={el.sel === true ? classes.selec : classes.notBooked}
-                    />
-                  ) : (
-                    <AirlineSeatFlatOutlinedIcon className={classes.booked} />
-                  )}
-                </div>
-              );
-            })}
-          </Upper>
-          <Lower>
-            {seats.map(el => {
-              return (
-                <>
-                  {" "}
-                  {el.available ? (
-                    <AirlineSeatFlatOutlinedIcon onClick={handleClick} className={classes.notBooked} />
-                  ) : (
-                    <AirlineSeatFlatOutlinedIcon className={classes.booked} />
-                  )}{" "}
-                </>
-              );
-            })}
-          </Lower>
+          <UpperDiv>
+            <Front>Front</Front>
+            <div>
+              <Upper>
+                {upperSeats.slice(0, 10).map(el => {
+                  return (
+                    <>
+                      {el.available ? (
+                        <EachSeat
+                          onClick={() => handleUpperSeats(el.seatNo)}
+                          style={el.sel === true ? { backgroundColor: "green" } : { backgroundColor: "white" }}
+                          className={classes.notBooked}
+                        >
+                          <Small style={{backgroundColor:"white"}}/>
+                        </EachSeat>
+                      ) : (
+                        <EachSeat className={classes.booked}>
+                          <Small style={{backgroundColor:"white"}}/>
+                        </EachSeat>
+                      )}
+                    </>
+                  );
+                })}
+              </Upper>
+              <Upper>
+                {upperSeats.slice(10, 15).map(el => {
+                  return (
+                    <>
+                      {el.available ? (
+                        <EachSeat
+                          onClick={() => handleUpperSeats(el.seatNo)}
+                          style={el.sel === true ? { backgroundColor: "green" } : { backgroundColor: "white" }}
+                          className={classes.notBooked}
+                        >
+                          <Small style={{backgroundColor:"white"}}/>
+                        </EachSeat>
+                      ) : (
+                        <EachSeat className={classes.booked}>
+                          <Small style={{backgroundColor:"white"}} />
+                        </EachSeat>
+                      )}
+                    </>
+                  );
+                })}
+              </Upper>
+            </div>
+            <Rear>Rear</Rear>
+          </UpperDiv>
+
+          <br />
+          <LowerDiv>
+            <Front>Front</Front>
+            <div>
+            <Lower>
+              {lowerSeats.slice(0, 10).map(el => {
+                return (
+                  <>
+                    {el.available ? (
+                      <EachSeat
+                        onClick={() => handleLowerSeats(el.seatNo)}
+                        style={el.sel === true ? { backgroundColor: "green" } : { backgroundColor: "white" }}
+                        className={classes.notBooked}
+                      >
+                        <Small style={{backgroundColor:"white"}} />
+                      </EachSeat>
+                    ) : (
+                      <EachSeat className={classes.booked} >
+                        <Small style={{backgroundColor:"white"}} />
+                      </EachSeat>
+                    )}
+                  </>
+                );
+              })}
+            </Lower>
+            <Lower>
+              {lowerSeats.slice(10, 15).map(el => {
+                return (
+                  <>
+                    {el.available ? (
+                      <EachSeat
+                        onClick={() => handleLowerSeats(el.seatNo)}
+                        style={el.sel === true ? { backgroundColor: "green" } : { backgroundColor: "white" }}
+                        className={classes.notBooked}
+                      >
+                        <Small style={{backgroundColor:"white"}} />
+                      </EachSeat>
+                    ) : (
+                      <EachSeat className={classes.booked}>
+                        <Small style={{backgroundColor:"white"}} />
+                      </EachSeat>
+                    )}
+                  </>
+                );
+              })}
+            </Lower>
+            </div>
+            <Rear>Rear</Rear>
+          </LowerDiv>
+
         </SeatSelect>
+        <Options>
+          <OptFlex><Ava></Ava><Span>Available</Span></OptFlex>
+          <OptFlex><Selected></Selected><Span>Selected</Span></OptFlex>
+          <OptFlex><Unava></Unava><Span>Unavailable</Span></OptFlex>
+          <OptFlex><ForLad></ForLad><Span>For Ladies</Span></OptFlex>
+        </Options>
       </SeatBook>
-      <SeatDetails />
+      <SeatDetails>
+        <Jour>Onwards Journey</Jour>
+        <div>From <strong>bng to mng</strong></div>
+        <div>on <strong>29 july 2021</strong></div>
+        <hr></hr>
+        <div>Seat selected <span>{seatSelected.join(",")}</span></div>
+        <div>Total fare <span>&#8377;<span>{total}</span></span></div>
+        <div>Boarding Points <select><option>Hal</option><option>Kor</option></select></div>
+        <div>Droping Points <select><option>panjai</option><option>hid</option></select></div>
+        <hr></hr>
+        <button>Continue to Payment</button>
+
+      </SeatDetails>
     </Container>
   );
 }
