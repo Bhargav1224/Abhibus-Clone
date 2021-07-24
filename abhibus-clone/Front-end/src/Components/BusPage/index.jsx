@@ -1,7 +1,10 @@
 import {Card} from "./Card"
 import React, { useState } from "react";
+import {useSelector} from "react-redux"
 import style from "./index.module.css";
 import { FilterLeft } from "./FilterLeft";
+// import {data} from "./data.json"
+
 export const Index = () => {
   const [PriceFilter, setPriceFilter] = useState(true);
   const [seatFilter, setseatFilter] = useState(true);
@@ -9,11 +12,12 @@ export const Index = () => {
   const [ATimeFilter, setATimeFilter] = useState(true);
   const [RatingeFilter, setRatingeFilter] = useState(true);
 
-  // const [priceDrop,SetPriceDrop] = useState()
+  let {matchedBuses} = useSelector(state => state.bus)
+
+  console.log(matchedBuses.buses)
+
+
  
-
-
-
   return (
     <div>
       <div style={{ height: "180px" }}></div>
@@ -166,10 +170,14 @@ export const Index = () => {
         </div>
         <div>
           <div className={style.topImg}>
-            <img style={{width:"200px"}} src="https://static.abhibus.com/busgallery/offerbanners/Sep2020/10/top-banners-small-3.png" alt="" srcset="" />
+            <img style={{width:"200px"}} src="https://static.abhibus.com/img/diwali/banners/top-banners-rating.png" alt="" srcset="" />
+            <img style={{width:"200px",marginLeft:"5px"}} src="https://static.abhibus.com/busgallery/offerbanners/Sep2020/10/top-banners-small-3.png" alt="" srcset="" />
           </div>
           <div className={style.cardBody}>
-                <Card/>
+            {matchedBuses.buses && matchedBuses.buses.map((item)=>{
+              return  <Card busData={item}/>
+            })}
+              
           </div>
         </div>
       </div>

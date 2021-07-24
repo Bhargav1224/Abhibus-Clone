@@ -8,7 +8,7 @@ const initState = {
   isLoading: false,
   isSuccess: false,
   isError: false,
-  matchedBuses: [],
+  matchedBuses: {},
 };
 
 export const busDetailsReducer = (state = initState, { type, payload }) => {

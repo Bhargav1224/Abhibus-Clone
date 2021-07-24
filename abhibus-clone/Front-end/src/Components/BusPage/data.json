@@ -1,0 +1,113 @@
+{
+    "data": [
+        {
+            "_id": "60fac029d10f3721c400fd95",
+            "boardingPoints": [
+                "Indiranagar",
+                "HSR Layout",
+                "KR Puram",
+                "Tin Factory"
+            ],
+            "droppingPoint": [
+                "Canacona",
+                "Mapsa",
+                "Margoa",
+                "PANJIM"
+            ],
+            "buses": [
+                {
+                    "_id": "60f97a63784b2736dcb4e971",
+                    "busTypeName": "VRL TRAVELS",
+                    "travelerAgentName": "NON-AC Seater/Sleeper (2 + 1)",
+                    "rating": "4.2",
+                    "totalRating": "6k",
+                    "startTime": "20:00",
+                    "arrivalTime": "09:00",
+                    "travelTime": "13.00",
+                    "discount": "1",
+                    "price": 760,
+                    "availableSeats": 36,
+                    "available": true,
+                    "AC": false,
+                    "NonAC": true,
+                    "Volvo": true,
+                    "Seater": true,
+                    "Sleeper": true,
+                    "cancelPolicy": "true",
+                    "createdAt": "2021-07-22T14:02:11.168Z",
+                    "updatedAt": "2021-07-22T14:02:11.168Z"
+                },
+                {
+                    "_id": "60f97ac4784b2736dcb4e972",
+                    "busTypeName": "ANAND TRAVELS",
+                    "travelerAgentName": "AC Seater/Sleeper (2 + 1)",
+                    "rating": "4.2",
+                    "totalRating": "6k",
+                    "startTime": "20:00",
+                    "arrivalTime": "08:00",
+                    "travelTime": "12.00",
+                    "discount": "2",
+                    "price": 3000,
+                    "availableSeats": 17,
+                    "available": true,
+                    "AC": true,
+                    "NonAC": false,
+                    "Volvo": true,
+                    "Seater": true,
+                    "Sleeper": true,
+                    "cancelPolicy": "true",
+                    "createdAt": "2021-07-22T14:03:48.753Z",
+                    "updatedAt": "2021-07-22T14:03:48.753Z"
+                },
+                {
+                    "_id": "60f97c2b784b2736dcb4e974",
+                    "busTypeName": "BHARATHI TRAVELS",
+                    "travelerAgentName": "AC Sleeper (2 + 1)",
+                    "rating": "4.2",
+                    "totalRating": "6k",
+                    "startTime": "22:30",
+                    "arrivalTime": "07:30",
+                    "travelTime": "06.00",
+                    "discount": "2",
+                    "price": 1990,
+                    "availableSeats": 0,
+                    "available": false,
+                    "AC": true,
+                    "NonAC": false,
+                    "Volvo": true,
+                    "Seater": true,
+                    "Sleeper": true,
+                    "cancelPolicy": "true",
+                    "createdAt": "2021-07-22T14:09:47.446Z",
+                    "updatedAt": "2021-07-22T14:09:47.446Z"
+                },
+                {
+                    "_id": "60f97cbf784b2736dcb4e975",
+                    "busTypeName": "SEABIRD TOURISTS",
+                    "travelerAgentName": "AC Sleeper (2 + 1)",
+                    "rating": "3.9",
+                    "totalRating": "1k",
+                    "startTime": "21:30",
+                    "arrivalTime": "11:00",
+                    "travelTime": "13.30",
+                    "discount": "2",
+                    "price": 1200,
+                    "availableSeats": 27,
+                    "available": true,
+                    "AC": true,
+                    "NonAC": false,
+                    "Volvo": true,
+                    "Seater": true,
+                    "Sleeper": true,
+                    "cancelPolicy": "true",
+                    "createdAt": "2021-07-22T14:12:15.395Z",
+                    "updatedAt": "2021-07-22T14:12:15.395Z"
+                }
+            ],
+            "departureLocation": "Bangalore",
+            "arrivalLocation": "Goa",
+            "journeyDate": "2021-07-26",
+            "__v": 0
+        }
+    ]
+}
