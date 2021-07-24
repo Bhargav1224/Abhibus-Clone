@@ -429,7 +429,7 @@ export const FilterLeft = () => {
       </div>
       <div className={style.PriceRange}>
         <div>Price Range</div>
-        <div>₹ {value.toString().slice(0,4)} - ₹ {value.toString().slice(4)}</div>
+        <div>₹ {value.toString().split(",")[0]} - ₹ {value.toString().split(",")[1]}</div>
         <div className={classes.root}>
          
           <div className={classes.root}>

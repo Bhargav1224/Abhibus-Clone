@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 export const Card = ({busData}) => {
   const [showCancellation, setShowCancellation] = useState(false);
   console.log(showCancellation);
-  console.log(busData)
+  // console.log(busData)
   return (
     <div className={style.card}>
       <div>
