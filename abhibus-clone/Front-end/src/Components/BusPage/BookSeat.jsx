@@ -11,7 +11,7 @@ import {
   Small,
   Front,
   UpperDiv,
-  Rear,LowerDiv,NotesIcon,Ava,Selected,ForLad,Unava,Options,OptFlex,Span,Jour,
+  Rear,LowerDiv,NotesIcon,Ava,Selected,ForLad,Unava,Options,OptFlex,Span,Jour,JourCity,SeatTaken,Button
 } from "./BookSeat.styled";
 import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles({
@@ -70,12 +70,12 @@ export function BookSeat() {
     return el.available===true&&count++
   })
   let [seatSelected,setSeatSelected] = React.useState([])
-  upperSeats.map(el => {
+  // upperSeats.map(el => {
     // console.log("Upper", el)
     //  var  retVal = el.sel===true && seatSelected.push(el.seatNo)
-    console.log('selected in upper: ', seatSelected)
+    // console.log('selected in upper: ', seatSelected)
     // return retVal
-  })
+  // })
   // lowerSeats.map(el => {
   //   console.log("Lower", el)
   //   // return el.sel==true&&seatSelected.push(el.seatNo)
@@ -83,7 +83,6 @@ export function BookSeat() {
   //   console.log('selected in lower: ', seatSelected)
   //   return retVal
   // })
-  const seatsTaken = seatSelected.join(",")
   let total = 0;
   upperSeats.map(el => {
     return el.sel===true&&(total+=Number(el.fare))
@@ -269,15 +268,15 @@ export function BookSeat() {
       </SeatBook>
       <SeatDetails>
         <Jour>Onwards Journey</Jour>
-        <div>From <strong>bng to mng</strong></div>
-        <div>on <strong>29 july 2021</strong></div>
+        <JourCity>From <strong>bng to mng</strong></JourCity>
+        <JourCity>on <strong>29 july 2021</strong></JourCity>
         <hr></hr>
-        <div>Seat selected <span>{seatSelected.join(",")}</span></div>
-        <div>Total fare <span>&#8377;<span>{total}</span></span></div>
-        <div>Boarding Points <select><option>Hal</option><option>Kor</option></select></div>
-        <div>Droping Points <select><option>panjai</option><option>hid</option></select></div>
+        <SeatTaken><div>Seat selected</div><div> <span>{seatSelected.join(",")}</span></div></SeatTaken>
+        <SeatTaken><div>Total fare</div><div> <span>&#8377;<span>{total}</span></span></div></SeatTaken>
+        <SeatTaken><div>Boarding Points</div> <select><option>Hal</option><option>Kor</option></select></SeatTaken>
+        <SeatTaken><div>Droping Points</div> <select><option>panjai</option><option>hid</option></select></SeatTaken>
         <hr></hr>
-        <button>Continue to Payment</button>
+        <Button disabled={seatSelected.length<1} >Continue to Payment</Button>
 
       </SeatDetails>
     </Container>

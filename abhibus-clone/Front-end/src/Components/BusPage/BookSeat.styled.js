@@ -5,21 +5,20 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 58% 30%;
   gap: 4%;
-  width: 70%;
+  width: 60%;
   margin: auto;
   padding: 10px;
   background-color: #dcdcdc;
 `;
 export const SeatBook = styled.div`
-padding: 20px;
+  padding: 20px;
 `;
 export const SeatDetails = styled.div`
-padding: 20px;
+  padding: 20px;
 `;
 export const SeatSelect = styled.div`
   border: 0.5px dotted black;
   padding: 20px;
-
 `;
 export const LadiesSeat = styled.div`
   display: grid;
@@ -27,8 +26,8 @@ export const LadiesSeat = styled.div`
   gap: 1%;
 `;
 export const NotesIcon = styled(SpeakerNotesIcon)`
-  margin-left: 30%;
-  margin-top: 30%;
+  margin-left: 40%;
+  margin-top: 50%;
 `;
 export const Upper = styled.div`
   display: grid;
@@ -66,14 +65,15 @@ export const Rear = styled.div`
   transform: rotate(270deg);
   color: black;
   font-size: 15px;
-  margin-left: 70%;
+  margin-left: 100%;
+  padding-left: 25px;
   margin-top: 30px;
   width: 20px;
 `;
 export const EachSeat = styled.div`
   border: 1px solid black;
   height: 24px;
-  width: 70px;
+  width: 50px;
   cursor: pointer;
   margin-bottom: 5px;
 `;
@@ -86,9 +86,9 @@ export const Small = styled.div`
 export const Options = styled.div`
   display: flex;
   justify-content: space-evenly;
-  width: 80%;
+  width: 100%;
   margin: auto;
-  margin-top:30px;
+  margin-top: 30px;
 `;
 export const Ava = styled.div`
   width: 30px;
@@ -116,14 +116,39 @@ export const Selected = styled.div`
   margin-right: 5px;
 `;
 export const OptFlex = styled.div`
-display: flex;
-`
+  display: flex;
+`;
 export const Span = styled.span`
-margin-top: 6px;
-`
+  margin-top: 6px;
+`;
 export const Jour = styled.div`
-font-size:15px;
-letter-spacing: 1px;
-font-weight: 600;
-margin-bottom:20px;
-`
+  font-size: 15px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 20px;
+`;
+export const JourCity = styled.div`
+  font-size: 13px;
+  color: #404040;
+`;
+export const SeatTaken = styled.div`
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #404040;
+  display: flex;
+  justify-content: space-between;
+  width: 65%;
+`;
+export const Button = styled.button`
+  color: #404040;
+  background-color: hotpink;
+  border: none;
+  padding: 5px 7px;
+  font-size:16px;
+  border-radius: 5px;
+  cursor: pointer;
+  &:disabled{
+background-color:#C0C0C0;
+  }
+`;
