@@ -62,6 +62,7 @@ export function BookSeat() {
     { seatNo: 14, available: true, sel: false,fare:650 },
     { seatNo: 15, available: true, sel: false,fare:650 }
   ]);
+  const [data,setData]=React.useState({from:"Bangalore",to:"mangalore",date:"26-July-2021"})
   var count = 0;
   upperSeats.map(el => {
     return el.available===true&&count++
@@ -268,8 +269,8 @@ export function BookSeat() {
       </SeatBook>
       <SeatDetails>
         <Jour>Onwards Journey</Jour>
-        <JourCity>From <strong>bng to mng</strong></JourCity>
-        <JourCity>on <strong>29 july 2021</strong></JourCity>
+        <JourCity>From <strong>{data.from} to {data.to}</strong></JourCity>
+        <JourCity>on <strong>{data.date}</strong></JourCity>
         <hr></hr>
         <SeatTaken><div>Seat selected</div><div> <span>{seatSelected.join(",")}</span></div></SeatTaken>
         <SeatTaken><div>Total fare</div><div> <span>&#8377;<span>{total}</span></span></div></SeatTaken>
