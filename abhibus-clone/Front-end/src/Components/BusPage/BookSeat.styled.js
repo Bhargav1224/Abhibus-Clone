@@ -3,8 +3,8 @@ import SpeakerNotesIcon from "@material-ui/icons/SpeakerNotes";
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: 58% 30%;
-  gap: 4%;
+  grid-template-columns: 64% 33%;
+  gap: 2%;
   width: 60%;
   margin: auto;
   padding: 10px;
