@@ -24,3 +24,87 @@
     "droppingPoint":["Hill station road","Main bus stand"],
     "buses":["60f926514d6be199782ff43a","60f926514d6be199782ff43b"]
     }
+
+
+
+"busTypeName": "ANAND TRAVELS",
+          "travelerAgentName": "AC Seater/Sleeper (2 + 1)",
+          "rating": "4.2",
+          "totalRating": "6k",
+          "startTime": "20:00",
+          "arrivalTime": "08:00",
+          "travelTime": "12.00",
+          "discount": "2",
+          "price": 3000,
+          "availableSeats": 17,
+          "available": true,
+          "AC": true,
+          "NonAC": false,
+          "Volvo": true,
+          "Seater": true,
+          "Sleeper": true,
+          "cancelPolicy": "true",
+
+
+"busTypeName": "VRL TRAVELS",
+          "travelerAgentName": "NON-AC Seater/Sleeper (2 + 1)",
+          "rating": "4.2",
+          "totalRating": "6k",
+          "startTime": "20:00",
+          "arrivalTime": "09:00",
+          "travelTime": "13.00",
+          "discount": "1",
+          "price": 760,
+          "availableSeats": 36,
+          "available": true,
+          "AC": false,
+          "NonAC": true,
+          "Volvo": true,
+          "Seater": true,
+          "Sleeper": true,
+          "cancelPolicy": "true",
+
+
+
+
+
+
+
+
+    "busTypeName": "BHARATHI TRAVELS",
+          "travelerAgentName": "AC Sleeper (2 + 1)",
+          "rating": "4.2",
+          "totalRating": "6k",
+          "startTime": "22:30",
+          "arrivalTime": "07:30",
+          "travelTime": "06.00",
+          "discount": "2",
+          "price": 1990,
+          "availableSeats": 0,
+          "available": false,
+          "AC": true,
+          "NonAC": false,
+          "Volvo": true,
+          "Seater": true,
+          "Sleeper": true,
+          "cancelPolicy": "true",
+
+
+
+           "busTypeName": "SEABIRD TOURISTS",
+          "travelerAgentName": "AC Sleeper (2 + 1)",
+          "rating": "3.9",
+          "totalRating": "1k",
+          "startTime": "21:30",
+          "arrivalTime": "11:00",
+          "travelTime": "13.30",
+          "discount": "2",
+          "price": 1200,
+          "availableSeats": 27,
+          "available": true,
+          "AC": true,
+          "NonAC": false,
+          "Volvo": true,
+          "Seater": true,
+          "Sleeper": true,
+          "cancelPolicy": "true",

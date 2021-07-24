@@ -40,3 +40,7 @@ export const getBusDetails =
 			})
 			.catch((err) => dispatch(busDetailsFail(SyntaxError)));
 	};
+
+
+
+	

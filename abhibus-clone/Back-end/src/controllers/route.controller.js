@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
 
 router.get("/", async (req, res) => {
 	try {
-		const route = await Route.find().lean().exec();
+		const route = await Route.find().populate("buses").lean().exec();
 		console.log("res", route);
 		return res.status(200).json({ data: route });
 	} catch (er) {

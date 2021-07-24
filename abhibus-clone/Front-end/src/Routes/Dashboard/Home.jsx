@@ -54,7 +54,6 @@ export function Home(init) {
 		setQuires({ ...quires, [name]: value });
 	};
 
-
 	const handleSearch = (e) => {
 		e.preventDefault();
 	
@@ -163,6 +162,7 @@ export function Home(init) {
 			<AbhiData />
 			<Faq />
 			<AppStores />
+
 		</div>
 	);
 }
