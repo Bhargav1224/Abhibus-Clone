@@ -35,7 +35,7 @@ font-size:19px;
 }
 `
 export const ImgChange = styled.img`
-left: 27.7%;
+left: 26%;
 top:70.5%;
 position : absolute;
 width:30px;

@@ -3,7 +3,8 @@ import { Route, Switch } from "react-router-dom";
 import { Navbar } from "../Components/Navbar/Navbar";
 import { Passenger } from "../Components/Passenger/Passenger";
 import { Home } from "./Dashboard/Home";
-import { Index } from "../Components/BusPage/index";
+import {Index} from "../Components/BusPage/index"
+import { Footer } from "../Components/Footer/Footer";
 export function Routes() {
   return (
     <>
