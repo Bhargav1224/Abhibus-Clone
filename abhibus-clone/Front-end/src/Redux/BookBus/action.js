@@ -35,8 +35,12 @@ export const getBusDetails =
 			)
 
 			.then((res) => {
-				console.log(res.data);
-				dispatch(busDetailsSuccess(res.data));
+				console.log(res.data.data[0]);
+				dispatch(busDetailsSuccess(res.data.data[0]));
 			})
 			.catch((err) => dispatch(busDetailsFail(SyntaxError)));
 	};
+
+
+
+	

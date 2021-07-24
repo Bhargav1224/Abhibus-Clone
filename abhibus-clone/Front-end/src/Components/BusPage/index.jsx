@@ -2,6 +2,8 @@ import {Card} from "./Card"
 import React, { useState } from "react";
 import style from "./index.module.css";
 import { FilterLeft } from "./FilterLeft";
+import { useSelector } from "react-redux";
+
 export const Index = () => {
   const [PriceFilter, setPriceFilter] = useState(true);
   const [seatFilter, setseatFilter] = useState(true);
@@ -11,7 +13,9 @@ export const Index = () => {
 
   // const [priceDrop,SetPriceDrop] = useState()
  
-
+  const matchedBuses  = useSelector(state => state.bus.matchedBuses);
+  
+  console.log(matchedBuses.data);
 
 
   return (

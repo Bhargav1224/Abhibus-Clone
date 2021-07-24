@@ -9,14 +9,17 @@ app.use(express.json());
 const userController = require('./controllers/user.controller');
 app.use('/users',userController)
 
-//-----------------CRUD operation on user Schema ----------------
+//-----------------CRUD operation on route Schema ----------------
 const routeController = require('./controllers/route.controller');
 app.use('/routes',routeController)
 
-//-----------------CRUD operation on user Schema ----------------
+//-----------------CRUD operation on bus Schema ----------------
 const busController = require('./controllers/bus.controller');
 app.use('/buses',busController)
 
+//-----------------CRUD operation on passenger Schema ----------------
+const passengerController = require('./controllers/passenger.controller');
+app.use('/passengers',passengerController)
 
 //------------Creating GOOGLE OAUTH  Using passport js -----------------------
 app.use(passport.initialize());

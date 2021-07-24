@@ -53,6 +53,12 @@ export function Home(init) {
 		setQuires({ ...quires, [name]: value });
 	};
 
+	const matchedBuses  = useSelector(state => state.bus.matchedBuses);
+  
+	console.log(matchedBuses.buses);
+
+	
+	
 	const handleSearch = (e) => {
 		e.preventDefault();
 
@@ -157,6 +163,7 @@ export function Home(init) {
 			<AbhiData />
 			<Faq />
 			<AppStores />
+
 		</div>
 	);
 }
