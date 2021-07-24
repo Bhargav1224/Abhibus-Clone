@@ -37,6 +37,16 @@ GET http://localhost:8000/buses/price
 GET http://localhost:8000/buses/rating
 
 ###
+GET http://localhost:8000/buses/seats
+
+###
+GET http://localhost:8000/buses/departuretime
+
+###
+GET http://localhost:8000/buses/arrivaltime
+
+
+###
 POST  http://localhost:8000/routes  HTTP/1.1
 content-type: application/json
 
