@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import style from "./card.module.css";
 import Button from "@material-ui/core/Button";
-export const Card = () => {
+export const Card = ({busData}) => {
   const [showCancellation, setShowCancellation] = useState(false);
   console.log(showCancellation);
+  // console.log(busData)
   return (
     <div className={style.card}>
       <div>
@@ -15,14 +16,14 @@ export const Card = () => {
       </div>
       <div>
         <ul>
-          <li>12:05</li>
-          <p>02:37 hours</p>
-          <li>14:42</li>
+          <li>{busData.startTime}</li>
+          <p>{busData.travelTime} hours</p>
+          <li>{busData.arrivalTime}</li>
         </ul>
       </div>
       <div className={style.busDetails}>
-        <h2>GOGOBUS</h2>
-        <p>NON-AC Seater (2 + 2)</p>
+        <h2>{busData.busTypeName}</h2>
+        <p>{busData.travelerAgentName}</p>
         <div>
           <a
             onMouseOver={() => setShowCancellation(!showCancellation)}
@@ -33,8 +34,8 @@ export const Card = () => {
           </a>
         </div>
       </div>
-      <div className={style.availableSeats}>45 seats Available</div>
-      <div className={style.fare}>₹ 329</div>
+      <div className={style.availableSeats}>{busData.availableSeats} seats Available</div>
+      <div className={style.fare}>₹ {busData.price}</div>
       <div className={style.ratings}>
         <div>
           <img
@@ -42,7 +43,7 @@ export const Card = () => {
             alt=""
             srcset=""
           />
-          <span> 3.3</span>
+          <span> {busData.rating}</span>
           <p>(Few Ratings)</p>
         </div>
         <div className={style.bookNowBtn}>

@@ -6,6 +6,7 @@
     border-radius: 6px;
     color: rgb(36, 35, 35);
     border: 1px solid rgb(197, 197, 197);
+    margin-bottom: 15px;
 }
 .card:hover{
     background-color: rgb(235, 233, 233);
@@ -15,6 +16,9 @@
     width: 40px;
     margin-top: 30px;
     margin-left: 20px;
+}
+.card>div:nth-child(2){
+    width: 200px;
 }
 .card>div:nth-child(2)>ul{
     font-size:  16px;
@@ -33,7 +37,7 @@
     margin-top: 8px;
 }
 .busDetails{
-    margin-left: 100px;
+    width: 270px;
 }
 
 .busDetails>h2{
@@ -48,22 +52,25 @@
 }
 .busDetails>div{
     font-size: 12px;
-    margin-top: -5px;
+    margin-top: -5px; 
+}
+.busDetails>div>a{
+    color: rgb(107,167,222);
 }
 .availableSeats{
     margin-top: 45px;
     color: rgb(153, 153, 153);
     font-size: 13px;
-    margin-left: 140px;
+   width: 200px;
 }
 .fare{
     margin-top: 40px;
     color: rgb(31, 31, 31);
     font-size: 24px;
-    margin-left: 100px;
+    width: 120px;
 }
 .ratings{
-    margin-left: 50px;
+    /* margin-left: 50px; */
     padding-right: 10px;
 }
 .ratings>div:first-child{

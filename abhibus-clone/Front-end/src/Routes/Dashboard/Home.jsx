@@ -24,6 +24,7 @@ import { Faq } from "./Faq.jsx";
 import { AppStores } from "./AppStores.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusDetails } from "../../Redux/BookBus/action.js";
+import { Link, Redirect, useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
 	inp: { border: "0.5px solid grey" },
@@ -44,7 +45,7 @@ const init = {
 export function Home(init) {
 	const classes = useStyles();
 	const [quires, setQuires] = useState(init);
-
+	let history = useHistory()
 	const { leaving, going, date } = quires;
 	const dispatch = useDispatch();
 	const handleChange = (e) => {
@@ -53,15 +54,9 @@ export function Home(init) {
 		setQuires({ ...quires, [name]: value });
 	};
 
-	const matchedBuses  = useSelector(state => state.bus.matchedBuses);
-  
-	console.log(matchedBuses.buses);
-
-	
-	
 	const handleSearch = (e) => {
 		e.preventDefault();
-
+	
 		const payload = {
 			leaving,
 			going,
@@ -71,6 +66,9 @@ export function Home(init) {
 		dispatch(getBusDetails(payload));
 
 		console.log(quires);
+	
+		history.push("/bus")
+	
 	};
 
 	return (
@@ -123,6 +121,7 @@ export function Home(init) {
 						InputLabelProps={{ shrink: true }}
 						variant="outlined"
 					/>
+					
 					<Button
 						onClick={handleSearch}
 						className={classes.btn}
