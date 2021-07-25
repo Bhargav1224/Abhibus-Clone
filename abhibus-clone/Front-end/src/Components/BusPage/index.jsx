@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import style from "./index.module.css";
 import { FilterLeft } from "./FilterLeft";
+import { Footer } from "../Footer/Footer";
 // import {data} from "./data.json"
 
 export const Index = () => {
@@ -19,6 +20,49 @@ export const Index = () => {
 	const [value, setValue] = useState(matchedBuses.buses || []);
 
 	// console.log(value);
+
+	const filter = (typeAc) => {
+		console.log(typeAc);
+		if (!typeAc) {
+			const filter = value
+				.filter((item) => item.AC)
+				.map((item) => {
+					return item;
+				});
+
+			setValue(filter);
+		} else {
+			setValue(matchedBuses.buses);
+		}
+	};
+
+	const seater = (typeSeater) => {
+		console.log(typeSeater);
+		if (!typeSeater) {
+			const filter = value
+				.filter((item) => item.Seater)
+				.map((item) => {
+					return item;
+				});
+
+			setValue(filter);
+		} else {
+			setValue(matchedBuses.buses);
+		}
+	};
+
+	const buspartnersfn = (checked, status) => {
+		if (status) {
+			const filter = value
+				.filter((item) => item.busTypeName === checked)
+				.map((item) => {
+					return item;
+				});
+			setValue(filter);
+		} else {
+			setValue(matchedBuses.buses);
+		}
+	};
 
 	const handlePrice = () => {
 		if (PriceFilter) {
@@ -116,7 +160,16 @@ export const Index = () => {
 		setValue(matchedBuses.buses);
 	}, [matchedBuses]);
 
+	let details = {
+		arrivallocation: matchedBuses?.arrivalLocation,
+		departurelocation: matchedBuses?.departureLocation,
+		date:matchedBuses?.journeyDate
+		
+	}
+
+
 	return (
+		<>
 		<div>
 			<div style={{ height: "180px" }}></div>
 			<div className={style.sortBar}>
@@ -274,7 +327,11 @@ export const Index = () => {
 			</div>
 			<div className={style.mainBody}>
 				<div style={{ marginLeft: "10%" }}>
-					<FilterLeft />
+					<FilterLeft
+						filter={filter}
+						seater={seater}
+						buspartnersfn={buspartnersfn}
+					/>
 				</div>
 				<div>
 					<div className={style.topImg}>
@@ -294,11 +351,13 @@ export const Index = () => {
 					<div className={style.cardBody}>
 						{matchedBuses.buses &&
 							value?.map((item) => {
-								return <Card busData={item} />;
+								return <Card busData={item} details={ details}/>;
 							})}
 					</div>
 				</div>
 			</div>
-		</div>
+			</div>
+			<Footer/>
+		</>
 	);
 };

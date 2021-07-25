@@ -25,6 +25,7 @@ import { AppStores } from "./AppStores.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusDetails } from "../../Redux/BookBus/action.js";
 import { Link, Redirect, useHistory } from "react-router-dom";
+import { Footer } from "../../Components/Footer/Footer.jsx";
 
 const useStyles = makeStyles({
 	inp: { border: "0.5px solid grey" },
@@ -165,6 +166,8 @@ export function Home(init) {
 			<AbhiData />
 			<Faq />
 			<AppStores />
+
+			<Footer/>
 		</div>
 	);
 }

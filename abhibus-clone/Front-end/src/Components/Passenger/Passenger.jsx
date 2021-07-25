@@ -125,8 +125,15 @@ const Headpayment = styled.p`
 	text-size-adjust: 100%;
     margin-left: 3%;
 `;
+
+
 export const Passenger = () => {
 	const history = useHistory();
+
+
+	const details = localStorage.getItem("details");
+	let value = JSON.parse(details);
+	console.log(value);
 
 	return (
 		<div>
