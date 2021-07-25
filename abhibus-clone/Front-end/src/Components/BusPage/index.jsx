@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import style from "./index.module.css";
 import { FilterLeft } from "./FilterLeft";
+import { Footer } from "../Footer/Footer";
 // import {data} from "./data.json"
 
 export const Index = () => {
@@ -159,7 +160,16 @@ export const Index = () => {
 		setValue(matchedBuses.buses);
 	}, [matchedBuses]);
 
+	let details = {
+		arrivallocation: matchedBuses?.arrivalLocation,
+		departurelocation: matchedBuses?.departureLocation,
+		date:matchedBuses?.journeyDate
+		
+	}
+
+
 	return (
+		<>
 		<div>
 			<div style={{ height: "180px" }}></div>
 			<div className={style.sortBar}>
@@ -341,11 +351,13 @@ export const Index = () => {
 					<div className={style.cardBody}>
 						{matchedBuses.buses &&
 							value?.map((item) => {
-								return <Card busData={item} />;
+								return <Card busData={item} details={ details}/>;
 							})}
 					</div>
 				</div>
 			</div>
-		</div>
+			</div>
+			<Footer/>
+		</>
 	);
 };

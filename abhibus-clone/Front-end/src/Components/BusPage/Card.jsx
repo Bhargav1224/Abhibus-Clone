@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import style from "./card.module.css";
 import Button from "@material-ui/core/Button";
-export const Card = ({ busData }) => {
+import { BookSeat } from "./BookSeat";
+export const Card = ({ busData,details }) => {
 	const [showCancellation, setShowCancellation] = useState(false);
 	console.log(showCancellation);
 	// console.log(busData)
+
+	const [seates, setSeates] = useState(false);
+	
+	const hangleSeates = () => {
+		setSeates(!seates)
+	}
 	return (
+		<>
 		<div className={style.card}>
 			<div>
 				<img
@@ -49,9 +57,15 @@ export const Card = ({ busData }) => {
 					<p>(Few Ratings)</p>
 				</div>
 				<div className={style.bookNowBtn}>
-					<button>Select Seat</button>
+					<button onClick={hangleSeates}>Select Seat</button>
+
 				</div>
+				
 			</div>
-		</div>
+
+			</div>
+			{seates&&<BookSeat price={busData.price} details={details} />}
+			</>
+
 	);
 };
