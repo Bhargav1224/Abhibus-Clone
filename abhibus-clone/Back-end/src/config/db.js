@@ -12,3 +12,4 @@ const connect = () => {
 
 module.exports=connect;
 
+// mongodb+srv://bhargav:bhagi1224@cluster0.dagbu.mongodb.net/abhibusdatabase?retryWrites=true&w=majority
