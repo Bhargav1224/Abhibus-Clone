@@ -28,7 +28,6 @@ import {
 	Button,
 } from "./BookSeat.styled";
 import { makeStyles } from "@material-ui/core/styles";
-import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 const useStyles = makeStyles({
 	booked: {
