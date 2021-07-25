@@ -137,6 +137,14 @@
     font-size: 15px;
     line-height: 20px; color: rgb(102, 102, 102);
 }
+.fareDetails+div+div+div{
+    padding-left: 15px;
+    padding-bottom: 10px;
+    display: flex;
+    gap: 120px;
+    font-size: 15px;
+    line-height: 20px; color: rgb(102, 102, 102);
+}
 .payable{
     display: flex;
     border: 1px solid rgb(190, 189, 189);

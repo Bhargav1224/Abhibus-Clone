@@ -5,7 +5,7 @@ import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 
 export const Nav = styled.div`
-  width: 98.2vw;
+  width: 100%;
   background: #efefef;
   border-bottom: 1px solid #ccc;
   display: flex;

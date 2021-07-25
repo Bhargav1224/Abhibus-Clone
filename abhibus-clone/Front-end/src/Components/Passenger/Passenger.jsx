@@ -30,7 +30,7 @@ const DetailsBox = styled.div`
   margin-top: -9%;
   border: 1px solid rgb(206, 202, 202);
   float: right;
-  background-color: rgb(239,239,239);
+  background-color: rgb(239, 239, 239);
 `;
 const Logindetails = styled.div`
   height: 70px;
@@ -99,9 +99,9 @@ const CouponCode = styled.input`
   margin-left: 3%;
   margin-top: 1%;
   text-size-adjust: 100%;
-  &:disabled{
-	  background-color:grey;
-	  color:red;
+  &:disabled {
+    background-color: grey;
+    color: red;
   }
 `;
 
@@ -138,15 +138,15 @@ const Headpayment = styled.p`
   font-weight: 600;
 `;
 const Stripe = styled.div`
-margin-left:30%;
-margin-top: 30%;
-`
+  margin-left: 30%;
+  margin-top: 30%;
+`;
 const Striped = styled(StripeCheckout)`
-width: 150px;
-height: 50px;
-margin: 10%;
-background-color:rgb(125, 197, 238);
-`
+  width: 150px;
+  height: 50px;
+  margin: 10%;
+  background-color: rgb(125, 197, 238);
+`;
 
 const init = {
   email: "",
@@ -200,7 +200,7 @@ export const Passenger = init => {
     }
     var new_total = value?.total;
     console.log(new_total);
-    const obj = { ...value, final_total:value.total };
+    const obj = { ...value, final_total: value.total };
     console.log(obj);
     localStorage.setItem("details", JSON.stringify(obj));
   };
@@ -279,11 +279,7 @@ export const Passenger = init => {
           <div>Onward</div>
           <div>
             <div>
-              <img
-                src="https://cdn.iconscout.com/icon/premium/png-64-thumb/bus-3916885-3244687.png"
-                alt=""
-                srcset=""
-              />
+              <img src="https://cdn.iconscout.com/icon/premium/png-64-thumb/bus-3916885-3244687.png" alt="" srcset="" />
             </div>
             <div className={style.busDetail}>
               <h5>{value.busname}</h5>
@@ -295,29 +291,37 @@ export const Passenger = init => {
         </div>
         <div>
           <div className={style.travelDetails}>
-            <div className={style.boldtext}><li>{value.from}</li> </div>
+            <div className={style.boldtext}>
+              <li>{value.from}</li>{" "}
+            </div>
             <div>{value.boarding}</div>
             <div>{value.date}</div>
-            <div style={{marginTop:"40px"}} className={style.boldtext}><li>{value.to}</li> </div>
+            <div style={{ marginTop: "40px" }} className={style.boldtext}>
+              <li>{value.to}</li>{" "}
+            </div>
             <div>{value.droping}</div>
             <div>2021-07-27 </div>
           </div>
         </div>
-		<div style={{border: "1px solid rgb(190, 189, 189)"}}>
-			<div className={style.fareDetails}>Fare Details</div>
-			<div>
-				<div>Total Fare</div>
-				<div>₹ {value.total}</div>
-			</div>
-			<div>
-				<div>Service Charge</div>
-				<div>₹ 16.20</div>
-			</div>
-		</div>
-		<div className={style.payable}>
-			<div>Net Payable</div>
-			<div>₹ {value.final_total?value.final_total+16.20:value.total}</div>
-		</div>
+        <div style={{ border: "1px solid rgb(190, 189, 189)" }}>
+          <div className={style.fareDetails}>Fare Details</div>
+          <div>
+            <div>Total Fare</div>
+            <div>₹ {value.total}</div>
+          </div>
+          <div>
+            <div>Service Charge</div>
+            <div>₹ 16.20</div>
+          </div>
+          <div>
+            <div>Coupon Code</div>
+            <div>{julyCpn === true ?`10% OFF`: otherCpn === true ?  `5% OFF` : "0%"}</div>
+          </div>
+        </div>
+        <div className={style.payable}>
+          <div>Net Payable</div>
+          <div>₹ {value.final_total ? value.final_total + 16.2 : value.total}</div>
+        </div>
       </DetailsBox>
       <br />
       <LoginBox>
@@ -353,7 +357,7 @@ export const Passenger = init => {
       <LoginBox>
         <Para>
           <Checkbox
-		    disabled={otherCpn==true}
+            disabled={otherCpn == true}
             type="checkbox"
             checked={julyCpn === true}
             onChange={e => {
@@ -369,7 +373,7 @@ export const Passenger = init => {
         </Para>
         <Para>
           <Checkbox
-		  disabled={julyCpn==true}
+            disabled={julyCpn == true}
             checked={otherCpn === true}
             type="checkbox"
             onChange={e => {
@@ -389,8 +393,8 @@ export const Passenger = init => {
             value={julyCpn === true ? "JUL10" : otherCpn === true ? "OTH5" : code}
             onChange={e => {
               setCode(e.target.value);
-					  }}
-					  disabled={julyCpn === true|| otherCpn === true}
+            }}
+            disabled={julyCpn === true || otherCpn === true}
           />
           <Apply onClick={handleCoupon}>Apply</Apply>
         </Logindetails>
