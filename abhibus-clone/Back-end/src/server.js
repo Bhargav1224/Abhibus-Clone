@@ -25,7 +25,6 @@ app.use('/passengers',passengerController)
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 passport.serializeUser(function (user, done) {
     done(null, "user");
 });
@@ -59,10 +58,15 @@ app.get(
 
 //--------Staring the server ---------------------
 const start = async () => {
-	await connect();
-	app.listen(8000, () => {
-		console.log("Listening on port 8000");
-	});
+    try {
+        await connect();
+        app.listen(8000, () => {
+            console.log("Listening on port 8000");
+        });
+    }
+    catch (e) {
+        console.log(e)
+    }
 };
 
 module.exports = start;

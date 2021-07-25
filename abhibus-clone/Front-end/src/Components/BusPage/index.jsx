@@ -15,7 +15,7 @@ export const Index = () => {
 
 	let { matchedBuses } = useSelector((state) => state.bus);
 
-	// console.log(matchedBuses.buses);
+	console.log(matchedBuses.buses);
 
 	const [value, setValue] = useState(matchedBuses.buses || []);
 
