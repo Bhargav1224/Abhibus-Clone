@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
 	BusBook,
 	TravelOptions,
@@ -25,6 +25,7 @@ import { AppStores } from "./AppStores.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusDetails } from "../../Redux/BookBus/action.js";
 import { Link, Redirect, useHistory } from "react-router-dom";
+import { Footer } from "../../Components/Footer/Footer.jsx";
 
 const useStyles = makeStyles({
 	inp: { border: "0.5px solid grey" },
@@ -45,7 +46,7 @@ const init = {
 export function Home(init) {
 	const classes = useStyles();
 	const [quires, setQuires] = useState(init);
-	let history = useHistory()
+	let history = useHistory();
 	const { leaving, going, date } = quires;
 	const dispatch = useDispatch();
 	const handleChange = (e) => {
@@ -54,10 +55,9 @@ export function Home(init) {
 		setQuires({ ...quires, [name]: value });
 	};
 
-
 	const handleSearch = (e) => {
 		e.preventDefault();
-	
+
 		const payload = {
 			leaving,
 			going,
@@ -67,10 +67,13 @@ export function Home(init) {
 		dispatch(getBusDetails(payload));
 
 		console.log(quires);
-	
-		history.push("/bus")
-	
+
+		history.push("/bus");
 	};
+
+	// useEffect(() => {
+	// 	handleSearch();
+	// }, []);
 
 	return (
 		<div>
@@ -122,7 +125,7 @@ export function Home(init) {
 						InputLabelProps={{ shrink: true }}
 						variant="outlined"
 					/>
-					
+
 					<Button
 						onClick={handleSearch}
 						className={classes.btn}
@@ -163,6 +166,8 @@ export function Home(init) {
 			<AbhiData />
 			<Faq />
 			<AppStores />
+
+			<Footer/>
 		</div>
 	);
 }

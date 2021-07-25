@@ -126,98 +126,102 @@ const Headpayment = styled.p`
   margin-left: 3%;
   font-weight: 600;
 `;
+
+
 export const Passenger = () => {
   const history = useHistory();
 
-  return (
-    <div>
-      <Heading>Passenger Details</Heading>
-      <LoginBox>
-        <Para>Login (to avail better offers and services)</Para>
-        <Logindetails>
-          <Input placeholder="Enter Mobile Number"></Input>
-          <SendOtp>Send OTP</SendOtp>
-          <Para>or</Para>
-          <a href="https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fauth%2Fgoogle%2Fcallback&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&client_id=557229965892-qma0eslieva1g3nt9dqhg2mrj51htqe6.apps.googleusercontent.com&flowName=GeneralOAuthFlow">
-            <Fbook src="https://static.abhibus.com/img/search/facebook_short.png"></Fbook>
-          </a>
-          <a href="https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fauth%2Fgoogle%2Fcallback&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&client_id=557229965892-qma0eslieva1g3nt9dqhg2mrj51htqe6.apps.googleusercontent.com&flowName=GeneralOAuthFlow">
-            <Google src="https://static.abhibus.com/img/search/google_short.png"></Google>
-          </a>
-        </Logindetails>
-      </LoginBox>
-      <DetailsBox>
-       vvrvrvr
-      </DetailsBox>
-      <br />
-      <LoginBox>
-        <Para>
-          Enter Contact details ( Your booking details will be sent to your
-          email address and contact no. )
-        </Para>
-        <Logindetails>
-          <Input placeholder="Enter Your mailID"></Input>
-          <Input placeholder="Mobile No"></Input>
-          <Input placeholder="Emergency Contact Mobile No"></Input>
-        </Logindetails>
-      </LoginBox>
-      <br />
-      <LoginBox>
-        <Para>
-          Enter passenger details Please review passenger details before making
-          the booking
-        </Para>
-        <Logindetails>
-          <Input placeholder="Enter Full Name"></Input>
-          <Input placeholder="Enter Age"></Input>
-          <Select name="gender">
-            <option value="Select Gender">Select Gender</option>
-            <option value="Male">Male</option>
-            <option value="Fe-male">Fe-male</option>
-            <option value="Others">Others</option>
-          </Select>
-        </Logindetails>
-      </LoginBox>
-      <br />
-      <LoginBox>
-        <Para>
-          <Checkbox type="checkbox"></Checkbox>
-          This July get upto 500/- Assured Cashback : Use coupon AbhiSafe ,get
-          Upto RS.500/- Assured Cashback
-        </Para>
-        <Para>
-          <Checkbox type="checkbox"></Checkbox>
-          Save Minimum 250/- on pay with rewards : Use coupon PWR250 ,get Upto
-          RS.250/- Assured Cashback
-        </Para>
-        <Logindetails>
-          <CouponCode placeholder="Coupon Code"></CouponCode>
-          <Apply>Apply</Apply>
-        </Logindetails>
-      </LoginBox>
-      <br />
-      <LoginBox>
-        <Para>Travel Insurance</Para>
-        <Para>
-          Secure your Trip with Travel Insurance for just ₹ 10 per person
-        </Para>
-        <Para>
-          <Checkbox type="checkbox"></Checkbox>
-          Yes I accepted the{" "}
-          <a
-            href="https://www.abhibus.com/insterms/TATA_AIG"
-            style={{ color: "red", textDecoration: "none" }}
-          >
-            terms and conditions
-          </a>
-        </Para>
-        <Para>
-          <Checkbox type="checkbox"></Checkbox>
-          No
-        </Para>
-      </LoginBox>
-      <br />
-      <PaymentBox>
+	const details = localStorage.getItem("details");
+	let value = JSON.parse(details);
+	console.log(value);
+
+	return (
+		<div>
+			<Heading>Passenger Details</Heading>
+			<LoginBox>
+				<Para>Login (to avail better offers and services)</Para>
+				<Logindetails>
+					<Input placeholder="Enter Mobile Number"></Input>
+					<SendOtp>Send OTP</SendOtp>
+					<Para>or</Para>
+					<a href="https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fauth%2Fgoogle%2Fcallback&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&client_id=557229965892-qma0eslieva1g3nt9dqhg2mrj51htqe6.apps.googleusercontent.com&flowName=GeneralOAuthFlow">
+						<Fbook src="https://static.abhibus.com/img/search/facebook_short.png"></Fbook>
+					</a>
+					<a href="https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fauth%2Fgoogle%2Fcallback&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&client_id=557229965892-qma0eslieva1g3nt9dqhg2mrj51htqe6.apps.googleusercontent.com&flowName=GeneralOAuthFlow">
+						<Google src="https://static.abhibus.com/img/search/google_short.png"></Google>
+					</a>
+				</Logindetails>
+			</LoginBox>
+			<DetailsBox></DetailsBox>
+			<br />
+			<LoginBox>
+				<Para>
+					Enter Contact details ( Your booking details will be sent to your
+					email address and contact no. )
+				</Para>
+				<Logindetails>
+					<Input placeholder="Enter Your mailID"></Input>
+					<Input placeholder="Mobile No"></Input>
+					<Input placeholder="Emergency Contact Mobile No"></Input>
+				</Logindetails>
+			</LoginBox>
+			<br />
+			<LoginBox>
+				<Para>
+					Enter passenger details Please review passenger details before making
+					the booking
+				</Para>
+				<Logindetails>
+					<Input placeholder="Enter Full Name"></Input>
+					<Input placeholder="Enter Age"></Input>
+					<Select name="gender">
+						<option value="Select Gender">Select Gender</option>
+						<option value="Male">Male</option>
+						<option value="Fe-male">Fe-male</option>
+						<option value="Others">Others</option>
+					</Select>
+				</Logindetails>
+			</LoginBox>
+			<br />
+			<LoginBox>
+				<Para>
+					<Checkbox type="checkbox"></Checkbox>
+					This July get upto 500/- Assured Cashback : Use coupon AbhiSafe ,get
+					Upto RS.500/- Assured Cashback
+				</Para>
+				<Para>
+					<Checkbox type="checkbox"></Checkbox>
+					Save Minimum 250/- on pay with rewards : Use coupon PWR250 ,get Upto
+					RS.250/- Assured Cashback
+				</Para>
+				<Logindetails>
+					<CouponCode placeholder="Coupon Code"></CouponCode>
+					<Apply>Apply</Apply>
+				</Logindetails>
+			</LoginBox>
+			<br />
+			<LoginBox>
+				<Para>Travel Insurance</Para>
+				<Para>
+					Secure your Trip with Travel Insurance for just ₹ 10 per person
+				</Para>
+				<Para>
+					<Checkbox type="checkbox"></Checkbox>
+					Yes I accepted the{" "}
+					<a
+						href="https://www.abhibus.com/insterms/TATA_AIG"
+						style={{ color: "red", textDecoration: "none" }}
+					>
+						terms and conditions
+					</a>
+				</Para>
+				<Para>
+					<Checkbox type="checkbox"></Checkbox>
+					No
+				</Para>
+			</LoginBox>
+			<br />
+			<PaymentBox>
         <Headpayment>
           <div>Make Payment</div>
         </Headpayment>
@@ -305,6 +309,6 @@ export const Passenger = () => {
           </div>
         </div>
       </PaymentBox>
-    </div>
-  );
+		</div>
+	);
 };

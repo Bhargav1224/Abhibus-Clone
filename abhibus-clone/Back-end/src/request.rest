@@ -29,6 +29,23 @@ content-type: application/json
 ###
 GET http://localhost:8000/buses
 
+//Sorting price
+###
+GET http://localhost:8000/buses/price
+
+###
+GET http://localhost:8000/buses/rating
+
+###
+GET http://localhost:8000/buses/seats
+
+###
+GET http://localhost:8000/buses/departuretime
+
+###
+GET http://localhost:8000/buses/arrivaltime
+
+
 ###
 POST  http://localhost:8000/routes  HTTP/1.1
 content-type: application/json
@@ -39,12 +56,28 @@ content-type: application/json
     "journeyDate":"2021-07-26",
     "boardingPoints":["Indiranagar","HSR Layout","KR Puram","Tin Factory"],
     "droppingPoint":["Canacona","Mapsa","Margoa","PANJIM"],
-    "buses":["60f97c2b784b2736dcb4e974","60f97cbf784b2736dcb4e975"]
+    "buses":["60f97a63784b2736dcb4e971","60f97ac4784b2736dcb4e972","60f97c2b784b2736dcb4e974","60f97cbf784b2736dcb4e975"]
 }
 
 
 ###
 GET http://localhost:8000/routes/services/?from=Bangalore&&to=Goa&&date=2021-07-26
 
+###
+GET http://localhost:8000/routes
 
+###
+POST http://localhost:8000/passengers  HTTP/1.1
+content-type: application/json
 
+{
+    "email":"obul@gmail.com",
+    "mobile":9781271622,
+    "emergency_Contact":1978269112,
+    "name":"obul",
+    "age":25,
+    "gender":"Male"
+}
+
+###
+GET http://localhost:8000/passengers

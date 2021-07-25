@@ -27,7 +27,7 @@ export const busDetailsReducer = (state = initState, { type, payload }) => {
         isLoading: false,
         isError: false,
         isSuccess: true,
-        matchedBuses:payload
+        matchedBuses: payload
       };
 
    

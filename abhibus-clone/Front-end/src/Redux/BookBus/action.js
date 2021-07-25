@@ -35,8 +35,20 @@ export const getBusDetails =
 			)
 
 			.then((res) => {
-				console.log(res.data);
+				console.log(res.data.data[0]);
 				dispatch(busDetailsSuccess(res.data.data[0]));
 			})
 			.catch((err) => dispatch(busDetailsFail(SyntaxError)));
 	};
+
+
+
+// http://localhost:8000/buses/price
+
+// http://localhost:8000/buses/rating
+
+// http://localhost:8000/buses/seats
+
+// http://localhost:8000/buses/departuretime
+
+// http://localhost:8000/buses/arrivaltime
