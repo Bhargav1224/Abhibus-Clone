@@ -64,7 +64,7 @@ export const Card = ({ busData,details }) => {
 			</div>
 
 			</div>
-			{seates&&<BookSeat price={busData.price} details={details} />}
+			{seates&&<BookSeat price={busData.price} busname={busData.busTypeName} details={details} />}
 			</>
 
 	);

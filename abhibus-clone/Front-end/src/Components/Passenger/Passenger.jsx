@@ -1,139 +1,165 @@
-import React from "react";
 import styled from "styled-components";
-import style from "./Passenger.module.css";
 import { useHistory } from "react-router";
+import React, { useContext, useEffect } from "react";
+import StripeCheckout from "react-stripe-checkout";
+import axios from "axios";
+import { toast } from "react-toastify";
+
+import style from "./Passenger.module.css";
 
 const Heading = styled.h1`
-  font-size: 36px;
-  margin-left: 3%;
-  font-family: "" Open Sans ", Arial, Helvetica, sans-serif";
-  color: rgb(34, 34, 34);
-  font-weight: 600;
-  text-size-adjust: 100%;
+	font-size: 36px;
+	margin-left: 3%;
+	font-family: "" Open Sans ", Arial, Helvetica, sans-serif";
+	color: rgb(34, 34, 34);
+	font-weight: 600;
+	text-size-adjust: 100%;
 `;
 const LoginBox = styled.div`
-  height: 150px;
-  width: 65%;
-  margin-left: 3%;
-  border: 1px solid rgb(206, 202, 202);
-  box-shadow: rgba(32, 33, 36, 0.18) 0px 1px 6px 0px;
+	height: 150px;
+	width: 65%;
+	margin-left: 3%;
+	border: 1px solid rgb(206, 202, 202);
+	box-shadow: rgba(32, 33, 36, 0.18) 0px 1px 6px 0px;
 `;
 const DetailsBox = styled.div`
-  height: 750px;
-  width: 22%;
-  margin-right: 3%;
-  margin-top: -9%;
-  border: 1px solid rgb(206, 202, 202);
-  float: right;
+	height: 750px;
+	width: 22%;
+	margin-right: 3%;
+	margin-top: -9%;
+	border: 1px solid rgb(206, 202, 202);
+	float: right;
 `;
 const Logindetails = styled.div`
-  height: 70px;
-  width: 95%;
-  display: flex;
+	height: 70px;
+	width: 95%;
+	display: flex;
 
-  margin-left: 3%;
-  margin-top: 1%;
-  /* border: 1px solid rgb(206, 202, 202); */
+	margin-left: 3%;
+	margin-top: 1%;
+	/* border: 1px solid rgb(206, 202, 202); */
 `;
 const Para = styled.p`
-  font-size: 15px;
-  margin-left: 3%;
-  font-family: "" Open Sans ", Arial, Helvetica, sans-serif";
-  color: rgb(80, 80, 80);
-  font-weight: 600;
-  text-size-adjust: 100%;
+	font-size: 15px;
+	margin-left: 3%;
+	font-family: "" Open Sans ", Arial, Helvetica, sans-serif";
+	color: rgb(80, 80, 80);
+	font-weight: 600;
+	text-size-adjust: 100%;
 `;
 const Input = styled.input`
-  height: 40px;
-  width: 250px;
-  border: 1px solid rgb(206, 202, 202);
-  margin-left: 3%;
-  margin-top: 1%;
+	height: 40px;
+	width: 250px;
+	border: 1px solid rgb(206, 202, 202);
+	margin-left: 3%;
+	margin-top: 1%;
 `;
 const SendOtp = styled.button`
-  height: 44px;
-  width: 150px;
-  border: 1px solid rgb(196, 0, 0);
-  cursor: pointer;
-  margin-left: 3%;
-  margin-top: 1%;
-  background-color: rgb(215, 77, 66);
-  color: rgb(255, 255, 255);
-  text-size-adjust: 100%;
+	height: 44px;
+	width: 150px;
+	border: 1px solid rgb(196, 0, 0);
+	cursor: pointer;
+	margin-left: 3%;
+	margin-top: 1%;
+	background-color: rgb(215, 77, 66);
+	color: rgb(255, 255, 255);
+	text-size-adjust: 100%;
 `;
 const Fbook = styled.img`
-  height: 44px;
-  width: 150px;
-  border: 1px solid rgb(206, 202, 202);
-  cursor: pointer;
-  margin-left: 3%;
-  margin-top: 3%;
+	height: 44px;
+	width: 150px;
+	border: 1px solid rgb(206, 202, 202);
+	cursor: pointer;
+	margin-left: 3%;
+	margin-top: 3%;
 `;
 const Google = styled.img`
-  height: 44px;
-  width: 150px;
-  border: 1px solid rgb(206, 202, 202);
-  cursor: pointer;
-  margin-left: 5%;
-  margin-top: 3%;
+	height: 44px;
+	width: 150px;
+	border: 1px solid rgb(206, 202, 202);
+	cursor: pointer;
+	margin-left: 5%;
+	margin-top: 3%;
 `;
 const Select = styled.select`
-  height: 40px;
-  width: 250px;
-  border: 1px solid rgb(206, 202, 202);
-  margin-left: 3%;
-  margin-top: 1%;
-  text-size-adjust: 100%;
+	height: 40px;
+	width: 250px;
+	border: 1px solid rgb(206, 202, 202);
+	margin-left: 3%;
+	margin-top: 1%;
+	text-size-adjust: 100%;
 `;
 const CouponCode = styled.input`
-  height: 40px;
-  width: 250px;
-  border: 1px dashed rgb(215, 77, 66);
-  margin-left: 3%;
-  margin-top: 1%;
-  text-size-adjust: 100%;
+	height: 40px;
+	width: 250px;
+	border: 1px dashed rgb(215, 77, 66);
+	margin-left: 3%;
+	margin-top: 1%;
+	text-size-adjust: 100%;
 `;
 
 const Apply = styled.button`
-  height: 44px;
-  width: 150px;
-  border: 1px solid rgb(196, 0, 0);
-  cursor: pointer;
-  margin-left: 3%;
-  margin-top: 1%;
-  background-color: rgb(196, 0, 0);
-  color: rgb(255, 255, 255);
-  text-size-adjust: 100%;
+	height: 44px;
+	width: 150px;
+	border: 1px solid rgb(196, 0, 0);
+	cursor: pointer;
+	margin-left: 3%;
+	margin-top: 1%;
+	background-color: rgb(196, 0, 0);
+	color: rgb(255, 255, 255);
+	text-size-adjust: 100%;
 `;
 
 const Checkbox = styled.input`
-  height: 15px;
-  width: 15px;
+	height: 15px;
+	width: 15px;
 `;
 
 const PaymentBox = styled.div`
-  height: 650px;
-  width: 65%;
-  margin-left: 3%;
-  border: 1px solid rgb(206, 202, 202);
-  box-shadow: rgba(32, 33, 36, 0.18) 0px 1px 6px 0px;
+	height: 650px;
+	width: 65%;
+	margin-left: 3%;
+	border: 1px solid rgb(206, 202, 202);
+	box-shadow: rgba(32, 33, 36, 0.18) 0px 1px 6px 0px;
 `;
 
 const Headpayment = styled.p`
-  color: rgb(71, 71, 71);
-  font-size: 14px;
-  text-size-adjust: 100%;
-  margin-left: 3%;
-  font-weight: 600;
+	color: rgb(71, 71, 71);
+	font-size: 14px;
+	text-size-adjust: 100%;
+	margin-left: 3%;
+	font-weight: 600;
 `;
 
-
 export const Passenger = () => {
-  const history = useHistory();
+	const history = useHistory();
 
+	async function handleToken(token) {
+		const response = await axios.post(
+			"https://aroul303.herokuapp.com/payment",
+			{ token, details }
+		);
+		const status = response.data.token.id;
+		const rate = response.data.details.plan;
+		history.push("/");
+		if (status) {
+			// setispay(true);
+			toast(`Successfully completed ${rate} subscription`, { type: "success" });
+			// history.push("/")
+		} else {
+			toast("Something went wrong", { type: "error" });
+		}
+	}
 	const details = localStorage.getItem("details");
 	let value = JSON.parse(details);
 	console.log(value);
+
+	// useEffect(() => {
+	// 	if () {
+	// 		history.push("/login");
+	// 	}
+	// 	// eslint-disable-next-line
+	// }, [ispay]);
 
 	return (
 		<div>
@@ -152,7 +178,9 @@ export const Passenger = () => {
 					</a>
 				</Logindetails>
 			</LoginBox>
-			<DetailsBox></DetailsBox>
+			<DetailsBox>
+				
+			</DetailsBox>
 			<br />
 			<LoginBox>
 				<Para>
@@ -222,93 +250,87 @@ export const Passenger = () => {
 			</LoginBox>
 			<br />
 			<PaymentBox>
-        <Headpayment>
-          <div>Make Payment</div>
-        </Headpayment>
-        <div style={{ display: "flex" }}>
-          <div className={style.paymentBodyLEFT}>
-            <div className={style.MobikwikBody}>
-              <div>
-                <div>
-                  <img
-                    width="25px"
-                    src="https://static.abhibus.com/img/MobiKwik.png"
-                    alt=""
-                    srcset=""
-                  />
-                </div>
-                <div>MobiKwik</div>
-              </div>
-              <div>Rs. 100 Instant Discount</div>
-            </div>
-            <div className={style.phonepe}>
-              <img
-                src="https://static.abhibus.com/img/app/icons/phonepe/pp-logo-n.png"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <div className={style.phonepe}>
-              <img
-                src="https://static.abhibus.com/img/gpay/gpay-color-48.png"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <div className={style.phonepe}>
-              <h3>
-                UPI
-              </h3>
-            </div>
-            <div className={style.phonepe}>
-              <h3>
-                Wallets
-              </h3>
-            </div>
-            <div className={style.phonepe}>
-              <img
-                src="https://static.abhibus.com/img/olapostpaid.png"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <div className={style.phonepe}>
-              <h3>
-                Credit Cards
-              </h3>
-            </div>
-            <div className={style.phonepe}>
-              <h3>
-                Debit Cards
-              </h3>
-            </div>
-            <div className={style.phonepe}>
-              <h3>
-                Net Banking
-              </h3>
-            </div>
-            <div className={style.phonepe}>
-              <img
-                src="https://static.abhibus.com/img/ap-logo-n.png"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <div className={style.phonepe}>
-              <h3>
-                Cash Cards
-              </h3>
-            </div>
-          </div>
+				<Headpayment>
+					<div>Make Payment</div>
+				</Headpayment>
+				<div style={{ display: "flex" }}>
+					<div className={style.paymentBodyLEFT}>
+						<div className={style.MobikwikBody}>
+							<div>
+								<div>
+									<img
+										width="25px"
+										src="https://static.abhibus.com/img/MobiKwik.png"
+										alt=""
+										srcset=""
+									/>
+								</div>
+								<div>MobiKwik</div>
+							</div>
+							<div>Rs. 100 Instant Discount</div>
+						</div>
+						<div className={style.phonepe}>
+							<img
+								src="https://static.abhibus.com/img/app/icons/phonepe/pp-logo-n.png"
+								alt=""
+								srcset=""
+							/>
+						</div>
+						<div className={style.phonepe}>
+							<img
+								src="https://static.abhibus.com/img/gpay/gpay-color-48.png"
+								alt=""
+								srcset=""
+							/>
+						</div>
+						<div className={style.phonepe}>
+							<h3>UPI</h3>
+						</div>
+						<div className={style.phonepe}>
+							<h3>Wallets</h3>
+						</div>
+						<div className={style.phonepe}>
+							<img
+								src="https://static.abhibus.com/img/olapostpaid.png"
+								alt=""
+								srcset=""
+							/>
+						</div>
+						<div className={style.phonepe}>
+							<h3>Credit Cards</h3>
+						</div>
+						<div className={style.phonepe}>
+							<h3>Debit Cards</h3>
+						</div>
+						<div className={style.phonepe}>
+							<h3>Net Banking</h3>
+						</div>
+						<div className={style.phonepe}>
+							<img
+								src="https://static.abhibus.com/img/ap-logo-n.png"
+								alt=""
+								srcset=""
+							/>
+						</div>
+						<div className={style.phonepe}>
+							<h3>Cash Cards</h3>
+						</div>
+					</div>
 
-          <div className={style.paymentRight}>
-              <div>
-                  <div><input type="radio" name="" id="" /></div>
-                  <div>MobiKwik</div>
-              </div>
-          </div>
-        </div>
-      </PaymentBox>
+					<div className={style.paymentRight}>
+						<br />
+						<br />
+						<StripeCheckout
+							stripeKey="pk_test_51J2c5MSJXP7UJEsaX09X6zs7lMCN3XUj3PYnH67gO15T98UKO3njq0h54A4GMrp28KRX9J0nGgs5nKB0ddJVownD00w9wRgoZa"
+							token={handleToken}
+							price={value.total}
+							
+							label="Make Payment"
+							className="redButton"
+						/>
+					</div>
+				</div>
+			</PaymentBox>
 		</div>
 	);
 };

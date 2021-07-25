@@ -41,7 +41,7 @@ const useStyles = makeStyles({
 	},
 });
 
-export function BookSeat({ price, details }) {
+export function BookSeat({ price, details,busname }) {
 	console.log(price);
 	const classes = useStyles();
 	const [upperSeats, setUpperSeats] = React.useState([
@@ -181,6 +181,7 @@ export function BookSeat({ price, details }) {
 		total,
 		droping,
 		boarding,
+		busname
 	};
 
 	const handleContinupayment = () => {
