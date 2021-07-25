@@ -3,7 +3,7 @@ import style from "./index.module.css";
 import { makeStyles,withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
-
+import {useSelector} from "react-redux"
 const useStyles = makeStyles({
   root: {
     width: 180,
@@ -58,25 +58,12 @@ function callback(key) {
 }
 
 let buspartners = [
-  { title: "Kaimur King" },
-  { title: "gogo Bus" },
-  { title: "Shatabdi Travels" },
-  { title: " Arzoo Travels" },
+  { title: "VRL TRAVELS" },
+  { title: "ANAND TRAVELS" },
+  { title: "SEABIRD TOURISTS" },
+  { title: "BHARATHI TRAVELS" },
 ];
-let BordingPoints = [
-  { title: "BIT Mesra" },
-  { title: "Booty More" },
-  { title: "Booty More circle" },
-  { title: "Dhurwa Bus Stand" },
-  { title: "Gumla Petrol Pump" },
-  { title: "Harmu" },
-  { title: "HAWAI NAGAR" },
-  { title: "Khadgarha Bus Stand" },
-  { title: "Patel Chowk" },
-  { title: "Ratu Road" },
-  { title: "Shahid Maidan" },
-  { title: "Tatisilwe" },
-];
+
 
 export const FilterLeft = () => {
   const [typeAc, setTypeAc] = useState(false);
@@ -133,6 +120,9 @@ export const FilterLeft = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  let {matchedBuses} = useSelector(state => state.bus)
+  console.log(matchedBuses)
 
   return (
     <div className={style.filtersBody}>
@@ -238,7 +228,7 @@ export const FilterLeft = () => {
           style={dropDown1 ? { display: "block" } : { display: "none" }}
           className={style.BusPartnerMenu}
         >
-          {buspartners.map((item) => {
+          {buspartners && buspartners.map((item) => {
             return (
               <div>
                 <div>
@@ -251,7 +241,7 @@ export const FilterLeft = () => {
                     id=""
                   />
                 </div>
-                <div>{item.title}</div>
+                <div style={{fontSize:"13px"}}>{item.title}</div>
               </div>
             );
           })}
@@ -283,9 +273,10 @@ export const FilterLeft = () => {
         </div>
         <div
           style={dropDown2 ? { display: "block" } : { display: "none" }}
-          className={style.BusPartnerMenu}
+          className={style.BusPartnerMenu} 
         >
-          {BordingPoints.map((item) => {
+          {matchedBuses && matchedBuses.boardingPoints.map((item) => {
+
             return (
               <div>
                 <div>
@@ -298,7 +289,7 @@ export const FilterLeft = () => {
                     id=""
                   />
                 </div>
-                <div>{item.title}</div>
+                <div>{item}</div>
               </div>
             );
           })}
@@ -332,7 +323,7 @@ export const FilterLeft = () => {
           style={dropDown3 ? { display: "block" } : { display: "none" }}
           className={style.BusPartnerMenu}
         >
-          {BordingPoints.map((item, i) => {
+          {matchedBuses && matchedBuses.droppingPoint.map((item, i) => {
             return (
               <div>
                 <div>
@@ -344,7 +335,7 @@ export const FilterLeft = () => {
                     name=""
                   />
                 </div>
-                <div>{item.title}</div>
+                <div>{item}</div>
               </div>
             );
           })}
@@ -442,10 +433,10 @@ export const FilterLeft = () => {
               valueLabelDisplay="auto"
               aria-labelledby="range-slider"
               ThumbComponent={AirbnbThumbComponent}
-              getAriaLabel={(index) =>
-                index === 0 ? "Minimum price" : "Maximum price"
-              }
-              
+              // getAriaLabel={(index) =>
+              //   index === 0 ? "Minimum price" : "Maximum price"
+              // }
+              defaultValue={1000}
             />
           </div>
         </div>

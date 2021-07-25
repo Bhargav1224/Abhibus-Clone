@@ -14,10 +14,6 @@ export const Index = () => {
 
   let {matchedBuses} = useSelector(state => state.bus)
 
-  console.log(matchedBuses.buses)
-
-
- 
   return (
     <div>
       <div style={{ height: "180px" }}></div>
