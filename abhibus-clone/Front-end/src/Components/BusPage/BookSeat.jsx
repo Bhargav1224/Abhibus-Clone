@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import {
 	SeatBook,
 	SeatDetails,
@@ -27,7 +28,6 @@ import {
 	Button,
 } from "./BookSeat.styled";
 import { makeStyles } from "@material-ui/core/styles";
-import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 const useStyles = makeStyles({
 	booked: {
@@ -41,7 +41,7 @@ const useStyles = makeStyles({
 	},
 });
 
-export function BookSeat({ price, details }) {
+export function BookSeat({ price, details,busname }) {
 	console.log(price);
 	const classes = useStyles();
 	const [upperSeats, setUpperSeats] = React.useState([
@@ -181,6 +181,7 @@ export function BookSeat({ price, details }) {
 		total,
 		droping,
 		boarding,
+		busname
 	};
 
 	const handleContinupayment = () => {

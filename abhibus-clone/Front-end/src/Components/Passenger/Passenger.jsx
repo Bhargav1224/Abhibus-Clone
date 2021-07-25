@@ -5,6 +5,8 @@ import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import { toast } from "react-toastify";
 
+import style from "./Passenger.module.css";
+
 const Heading = styled.h1`
 	font-size: 36px;
 	margin-left: 3%;
@@ -122,10 +124,11 @@ const PaymentBox = styled.div`
 `;
 
 const Headpayment = styled.p`
-	color: rgb(34, 34, 34);
+	color: rgb(71, 71, 71);
 	font-size: 14px;
 	text-size-adjust: 100%;
 	margin-left: 3%;
+	font-weight: 600;
 `;
 
 export const Passenger = () => {
@@ -175,7 +178,9 @@ export const Passenger = () => {
 					</a>
 				</Logindetails>
 			</LoginBox>
-			<DetailsBox></DetailsBox>
+			<DetailsBox>
+				
+			</DetailsBox>
 			<br />
 			<LoginBox>
 				<Para>
@@ -245,15 +250,86 @@ export const Passenger = () => {
 			</LoginBox>
 			<br />
 			<PaymentBox>
-				<Headpayment>Make Payment</Headpayment>
-				<StripeCheckout
-					stripeKey="pk_test_51J2c5MSJXP7UJEsaX09X6zs7lMCN3XUj3PYnH67gO15T98UKO3njq0h54A4GMrp28KRX9J0nGgs5nKB0ddJVownD00w9wRgoZa"
-					token={handleToken}
-					// price={price.price * 100}
-					// plan={price.plan}
-					label="Make Payment"
-					className="redButton"
-				/>
+				<Headpayment>
+					<div>Make Payment</div>
+				</Headpayment>
+				<div style={{ display: "flex" }}>
+					<div className={style.paymentBodyLEFT}>
+						<div className={style.MobikwikBody}>
+							<div>
+								<div>
+									<img
+										width="25px"
+										src="https://static.abhibus.com/img/MobiKwik.png"
+										alt=""
+										srcset=""
+									/>
+								</div>
+								<div>MobiKwik</div>
+							</div>
+							<div>Rs. 100 Instant Discount</div>
+						</div>
+						<div className={style.phonepe}>
+							<img
+								src="https://static.abhibus.com/img/app/icons/phonepe/pp-logo-n.png"
+								alt=""
+								srcset=""
+							/>
+						</div>
+						<div className={style.phonepe}>
+							<img
+								src="https://static.abhibus.com/img/gpay/gpay-color-48.png"
+								alt=""
+								srcset=""
+							/>
+						</div>
+						<div className={style.phonepe}>
+							<h3>UPI</h3>
+						</div>
+						<div className={style.phonepe}>
+							<h3>Wallets</h3>
+						</div>
+						<div className={style.phonepe}>
+							<img
+								src="https://static.abhibus.com/img/olapostpaid.png"
+								alt=""
+								srcset=""
+							/>
+						</div>
+						<div className={style.phonepe}>
+							<h3>Credit Cards</h3>
+						</div>
+						<div className={style.phonepe}>
+							<h3>Debit Cards</h3>
+						</div>
+						<div className={style.phonepe}>
+							<h3>Net Banking</h3>
+						</div>
+						<div className={style.phonepe}>
+							<img
+								src="https://static.abhibus.com/img/ap-logo-n.png"
+								alt=""
+								srcset=""
+							/>
+						</div>
+						<div className={style.phonepe}>
+							<h3>Cash Cards</h3>
+						</div>
+					</div>
+
+					<div className={style.paymentRight}>
+						<br />
+						<br />
+						<StripeCheckout
+							stripeKey="pk_test_51J2c5MSJXP7UJEsaX09X6zs7lMCN3XUj3PYnH67gO15T98UKO3njq0h54A4GMrp28KRX9J0nGgs5nKB0ddJVownD00w9wRgoZa"
+							token={handleToken}
+							price={value.total}
+							
+							label="Make Payment"
+							className="redButton"
+						/>
+					</div>
+				</div>
 			</PaymentBox>
 		</div>
 	);

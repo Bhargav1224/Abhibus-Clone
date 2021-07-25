@@ -1,0 +1,54 @@
+/* .paymentBodyLEFT{
+   
+    background-color: rgb(243,243,243);
+    border: 1px solid rgb(189, 189, 189); 
+} */
+.MobikwikBody{
+    height: 80px;
+    width: 230px;
+    color: white;
+    background-color: rgb(170, 7, 7);
+    font-size: 15px;
+    font-weight: 600;
+    margin-left: 30px;
+}
+.MobikwikBody>div:first-child{
+    padding: 15px 0 0 15px;
+    display: flex;
+    gap: 5px;
+}
+.MobikwikBody>div:nth-child(2){
+    padding-left: 15px;
+}
+.MobikwikBody>div>div:nth-child(2){
+    margin-top: 5px;
+}
+.phonepe{
+    margin-left: 30px;
+    border: 1px solid rgb(129, 129, 129);
+    height: 40px;
+    background-color: rgb(243,243,243);
+    padding-left: 15px;
+    padding-top: 10px;
+   
+}
+.phonepe>img{
+    height: 28px;
+}
+.phonepe>h3{
+    font-size: 16px;
+    /* font-weight: 500; */
+    color: rgb(110, 110, 110);
+    margin-top: 5px;
+}
+.paymentRight{
+    border: 1px solid rgb(143, 143, 143);
+    width: 72%;
+    
+}
+.paymentRight>div:first-child{
+    display: flex;
+    padding-left: 20px;
+    padding-top: 20px;
+    gap: 5px;
+}
