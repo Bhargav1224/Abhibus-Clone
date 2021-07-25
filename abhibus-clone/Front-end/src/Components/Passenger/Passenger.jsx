@@ -6,6 +6,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import ClearIcon from "@material-ui/icons/Clear";
 import style from "./Passenger.module.css";
+import { Timer } from "./Timer";
 
 const Heading = styled.h1`
   font-size: 36px;
@@ -23,12 +24,13 @@ const LoginBox = styled.div`
   box-shadow: rgba(32, 33, 36, 0.18) 0px 1px 6px 0px;
 `;
 const DetailsBox = styled.div`
-  height: 750px;
+  /* height: 750px; */
   width: 22%;
   margin-right: 3%;
   margin-top: -9%;
   border: 1px solid rgb(206, 202, 202);
   float: right;
+  background-color: rgb(239,239,239);
 `;
 const Logindetails = styled.div`
   height: 70px;
@@ -198,7 +200,7 @@ export const Passenger = init => {
     }
     var new_total = value?.total;
     console.log(new_total);
-    const obj = { ...value, final_price:value.total };
+    const obj = { ...value, final_total:value.total };
     console.log(obj);
     localStorage.setItem("details", JSON.stringify(obj));
   };
@@ -266,7 +268,57 @@ export const Passenger = init => {
           </a>
         </Logindetails>
       </LoginBox>
-      <DetailsBox />
+      <DetailsBox>
+        <div className={style.Timer}>
+          <div>
+            <Timer />
+          </div>
+          <div>Minutes to Just Bus It</div>
+        </div>
+        <div className={style.OnWards}>
+          <div>Onward</div>
+          <div>
+            <div>
+              <img
+                src="https://cdn.iconscout.com/icon/premium/png-64-thumb/bus-3916885-3244687.png"
+                alt=""
+                srcset=""
+              />
+            </div>
+            <div className={style.busDetail}>
+              <h5>{value.busname}</h5>
+              <p>Sleeper/Seater</p>
+              <p>Seats {value.seatSelected.join(", ")}</p>
+              <p>{value.date}</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div className={style.travelDetails}>
+            <div className={style.boldtext}><li>{value.from}</li> </div>
+            <div>{value.boarding}</div>
+            <div>{value.date}</div>
+            <div style={{marginTop:"40px"}} className={style.boldtext}><li>{value.to}</li> </div>
+            <div>{value.droping}</div>
+            <div>2021-07-27 </div>
+          </div>
+        </div>
+		<div style={{border: "1px solid rgb(190, 189, 189)"}}>
+			<div className={style.fareDetails}>Fare Details</div>
+			<div>
+				<div>Total Fare</div>
+				<div>₹ {value.total}</div>
+			</div>
+			<div>
+				<div>Service Charge</div>
+				<div>₹ 16.20</div>
+			</div>
+		</div>
+		<div className={style.payable}>
+			<div>Net Payable</div>
+			<div>₹ {value.final_total?value.final_total+16.20:value.total}</div>
+		</div>
+      </DetailsBox>
       <br />
       <LoginBox>
         <Para>Enter Contact details ( Your booking details will be sent to your email address and contact no. )</Para>
@@ -301,6 +353,7 @@ export const Passenger = init => {
       <LoginBox>
         <Para>
           <Checkbox
+		    disabled={otherCpn==true}
             type="checkbox"
             checked={julyCpn === true}
             onChange={e => {
@@ -316,6 +369,7 @@ export const Passenger = init => {
         </Para>
         <Para>
           <Checkbox
+		  disabled={julyCpn==true}
             checked={otherCpn === true}
             type="checkbox"
             onChange={e => {
@@ -332,7 +386,7 @@ export const Passenger = init => {
         <Logindetails>
           <CouponCode
             placeholder="Coupon Code"
-            value={julyCpn === true ? "JUL10" : otherCpn === true ? "OTH5" : null}
+            value={julyCpn === true ? "JUL10" : otherCpn === true ? "OTH5" : code}
             onChange={e => {
               setCode(e.target.value);
 					  }}

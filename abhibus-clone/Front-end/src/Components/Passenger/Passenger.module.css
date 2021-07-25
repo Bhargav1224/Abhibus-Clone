@@ -53,3 +53,97 @@
     padding-top: 20px;
     gap: 5px;
 }
+.Timer{
+    display: flex;
+    height: 20px;
+    background-color: rgb(239,239,239);
+    padding: 15px;
+    gap: 10px;
+    font-size: 14px;
+    color: rgb(102, 102, 102);
+    border: 1px solid rgb(190, 189, 189);
+}
+.Timer>div:first-child{
+   color: rgb(245, 40, 40); 
+    font-size: 18px;
+    font-weight: 600;
+}
+.OnWards{
+    border: 1px solid rgb(190, 189, 189);
+    height: 120px;
+    background-color: rgb(239,239,239);
+}
+.OnWards>div:first-child{
+    font-size: 16px;
+    color: rgb(102, 102, 102);
+    margin: 10px 0 0 10px;
+
+}
+.OnWards>div:nth-child(2){
+    display: flex;
+    gap: 10px;
+    margin: 10px 0 0 10px;
+}
+.OnWards>div:nth-child(2)>div:first-child>img{
+    height: 40px;
+}
+
+.busDetail>h5{
+    margin-top: 0px;
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: rgb(88, 88, 88);
+}
+.busDetail>p{
+    margin-top: -10px;
+    font-size: 13px;
+    color: rgb(102, 102, 102);
+}
+.travelDetails{
+    font-size: 14px;
+    padding: 10px 0 10px 25px;
+    color: rgb(102, 102, 102);
+    line-height: 20px;
+    border: 1px solid rgb(190, 189, 189);
+}
+.boldtext{
+    font-size: 16px;
+    color: rgb(83, 83, 83);
+    font-weight: 600;
+    margin-left: -21px;
+}
+.fareDetails{
+    padding: 10px 0 10px 15px;
+    font-size: 16px;
+    color: rgb(83, 83, 83);
+    font-weight: 600;
+    
+}
+.fareDetails+div{
+    padding-left: 15px;
+    display: flex;
+   gap: 80px;
+   font-size: 15px;
+   line-height: 20px; color: rgb(102, 102, 102);
+}
+.fareDetails+div>div{
+    width: 200px;
+}
+.fareDetails+div+div{
+    padding-left: 15px;
+    padding-bottom: 10px;
+    display: flex;
+    gap: 100px;
+    font-size: 15px;
+    line-height: 20px; color: rgb(102, 102, 102);
+}
+.payable{
+    display: flex;
+    border: 1px solid rgb(190, 189, 189);
+    padding: 15px;
+    background-color: rgb(155, 152, 152);
+    font-size: 18px;
+    color: rgb(24, 24, 24);
+    font-weight: 600;
+    gap: 33%;
+}
