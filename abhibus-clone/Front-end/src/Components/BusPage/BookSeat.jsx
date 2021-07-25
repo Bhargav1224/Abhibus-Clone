@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import {
   SeatBook,
   SeatDetails,
@@ -28,6 +29,8 @@ const useStyles = makeStyles({
 
 export function BookSeat() {
   const classes = useStyles();
+  const bus = useSelector(state => state.bus.matchedBuses);
+  console.log(bus)
   const [upperSeats, setUpperSeats] = React.useState([
     { seatNo: 16, available: true, sel: false,fare:600 },
     { seatNo: 17, available: true, sel: false,fare:600 },
