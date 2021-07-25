@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { useHistory } from "react-router";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import { toast } from "react-toastify";
-
+import ClearIcon from "@material-ui/icons/Clear";
 import style from "./Passenger.module.css";
 
 const Heading = styled.h1`
@@ -46,6 +46,7 @@ const Para = styled.p`
   color: rgb(80, 80, 80);
   font-weight: 600;
   text-size-adjust: 100%;
+  display: flex;
 `;
 const Input = styled.input`
   height: 40px;
@@ -130,30 +131,71 @@ const Headpayment = styled.p`
   margin-left: 3%;
   font-weight: 600;
 `;
-const Stripe = styled(StripeCheckout)`
-margin: 30px;
-margin-left: 30%;
-`
 
-export const Passenger = () => {
+const init = {
+  email: "",
+  phone_number: "",
+  emergency_no: "",
+  name: "",
+  age: "",
+  gender: ""
+};
+
+export const Passenger = init => {
   const history = useHistory();
+  const [data, setData] = useState(init);
+  const { email, phone_number, emergency_no, name, age, gender } = data;
   const [julyCpn, setJulyCpn] = React.useState(false);
   const [otherCpn, setOtherCpn] = React.useState(false);
-  console.log(julyCpn, otherCpn);
+  const [code, setCode] = React.useState("");
+	
+	// console.log(otherCpn);
+
+  const [passdata, setPassData] = useState([]);
+
+  const handleChange = e => {
+    let { name, value } = e.target;
+
+    setData({ ...data, [name]: value });
+  };
 
   const details = localStorage.getItem("details");
   let value = JSON.parse(details);
-  console.log(value);
-
-  let new_total;
+  //   console.log(value);
+  //   var new_total;
   if (julyCpn === true) {
-    new_total = value.total - 0.1 * value.total;
-    console.log(new_total);
-  } else if (otherCpn === true) {
-    new_total = value.total - 0.05 * value.total;
-    console.log(new_total);
-  }
+	  var total = value.total - 0.1 * value.total;
+	  console.log(total);
 
+    // 	  const obj = { ...value, total: Number(new_total) };
+    //   console.log(obj);
+    //   localStorage.setItem("details", JSON.stringify(obj));
+  }
+  if (otherCpn === true) {
+	  var total = value.total - 0.05 * value.total;
+	  console.log(total);
+	}
+
+  const handleRemoveCpn = () => {
+	  if (julyCpn === true) { setJulyCpn(false) }
+	  else if (otherCpn === true) { setOtherCpn(false)}
+    var new_total = value?.total;
+    console.log(new_total);
+    const obj = { ...value, total: value.total };
+    console.log(obj);
+    localStorage.setItem("details", JSON.stringify(obj));
+	};
+	let handleCoupon = () => {
+		if (code === "ABN7") {
+			var total = value.total - 0.07 * value.total;
+			console.log(total);
+		}
+	}
+	// const obj = { ...value, total: total };
+    // console.log(obj);
+    // localStorage.setItem("details", JSON.stringify(obj));
+  //   console.log(new_total);
+  //
   async function handleToken(token) {
     const response = await axios.post("https://aroul303.herokuapp.com/payment", { token, details });
     const status = response.data.token.id;
@@ -167,14 +209,26 @@ export const Passenger = () => {
       toast("Something went wrong", { type: "error" });
     }
   }
-  
 
-  // useEffect(() => {
-  // 	if () {
-  // 		history.push("/login");
-  // 	}
-  // 	// eslint-disable-next-line
-  // }, [ispay]);
+  const handlePassengerdetails = () => {
+    const payload = {
+      email,
+      mobile: phone_number,
+      emergency_Contact: emergency_no,
+      name,
+      age,
+      gender: gender
+    };
+
+    return axios
+      .post("http://localhost:8000/passengers", payload)
+      .then(res => {
+        setPassData(res.data);
+      })
+      .catch(er => {
+        console.log(er);
+      });
+  };
 
   return (
     <div>
@@ -198,18 +252,25 @@ export const Passenger = () => {
       <LoginBox>
         <Para>Enter Contact details ( Your booking details will be sent to your email address and contact no. )</Para>
         <Logindetails>
-          <Input placeholder="Enter Your mailID" />
-          <Input placeholder="Mobile No" />
-          <Input placeholder="Emergency Contact Mobile No" />
+          <Input name="email" onChange={handleChange} value={email} type="email" placeholder="Enter Your mailID" />
+
+          <Input type="text" onChange={handleChange} name="phone_number" value={phone_number} placeholder="Mobile No" />
+          <Input
+            type="text"
+            onChange={handleChange}
+            name="emergency_no"
+            value={emergency_no}
+            placeholder="Emergency Contact Mobile No"
+          />
         </Logindetails>
       </LoginBox>
       <br />
       <LoginBox>
         <Para>Enter passenger details Please review passenger details before making the booking</Para>
         <Logindetails>
-          <Input placeholder="Enter Full Name" />
-          <Input placeholder="Enter Age" />
-          <Select name="gender">
+          <Input type="text" onChange={handleChange} name="name" value={name} placeholder="Enter Full Name" />
+          <Input type="number" name="age" onChange={handleChange} value={age} placeholder="Enter Age" />
+          <Select name="gender" onChange={handleChange}>
             <option value="Select Gender">Select Gender</option>
             <option value="Male">Male</option>
             <option value="Fe-male">Fe-male</option>
@@ -220,16 +281,38 @@ export const Passenger = () => {
       <br />
       <LoginBox>
         <Para>
-          <Checkbox type="checkbox" />
-          This July get upto 500/- Assured Cashback : Use coupon AbhiSafe ,get Upto RS.500/- Assured Cashback
+          <Checkbox
+            type="checkbox"
+            checked={julyCpn === true}
+            onChange={e => {
+              setJulyCpn(e.target.checked);
+            }}
+          />
+          This July get upto 500/- discount : Use coupon JUL10 ,get Upto  RS.500/- instant discount
+          {julyCpn === true && (
+            <div>
+              <ClearIcon onClick={handleRemoveCpn} />
+            </div>
+          )}
         </Para>
         <Para>
-          <Checkbox type="checkbox" />
-          Save Minimum 250/- on pay with rewards : Use coupon PWR250 ,get Upto RS.250/- Assured Cashback
+          <Checkbox
+            checked={otherCpn === true}
+            type="checkbox"
+            onChange={e => {
+              setOtherCpn(e.target.checked);
+            }}
+          />
+          Save Maximum 250/- on pay with rewards : Use coupon OTH5 ,get 5% instant off
+          {otherCpn === true && (
+            <div>
+              <ClearIcon onClick={handleRemoveCpn} />
+            </div>
+          )}
         </Para>
         <Logindetails>
-          <CouponCode placeholder="Coupon Code" />
-          <Apply>Apply</Apply>
+          <CouponCode placeholder="Coupon Code" value={julyCpn === true ? "JUL10" : otherCpn === true ? "OTH5" :null} onChange={(e)=>{setCode(e.target.value)}} />
+          <Apply onClick={handleCoupon}>Apply</Apply>
         </Logindetails>
       </LoginBox>
       <br />
@@ -299,13 +382,15 @@ export const Passenger = () => {
           <div className={style.paymentRight}>
             <br />
             <br />
-            <Stripe
-              stripeKey="pk_test_51J2c5MSJXP7UJEsaX09X6zs7lMCN3XUj3PYnH67gO15T98UKO3njq0h54A4GMrp28KRX9J0nGgs5nKB0ddJVownD00w9wRgoZa"
-              token={handleToken}
-              price={value.total}
-              label="Make Payment"
-              className="redButton"
-            />
+            <div onClick={handlePassengerdetails}>
+              <StripeCheckout
+                stripeKey="pk_test_51J2c5MSJXP7UJEsaX09X6zs7lMCN3XUj3PYnH67gO15T98UKO3njq0h54A4GMrp28KRX9J0nGgs5nKB0ddJVownD00w9wRgoZa"
+                token={handleToken}
+                price={value.total}
+                label="Make Payment"
+                className="redButton"
+              />
+            </div>
           </div>
         </div>
       </PaymentBox>

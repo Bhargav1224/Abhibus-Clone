@@ -44,6 +44,7 @@
 .paymentRight{
     border: 1px solid rgb(143, 143, 143);
     width: 72%;
+    margin-left: 30px;
     
 }
 .paymentRight>div:first-child{
