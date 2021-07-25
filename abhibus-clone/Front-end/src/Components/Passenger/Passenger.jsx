@@ -97,6 +97,10 @@ const CouponCode = styled.input`
   margin-left: 3%;
   margin-top: 1%;
   text-size-adjust: 100%;
+  &:disabled{
+	  background-color:grey;
+	  color:red;
+  }
 `;
 
 const Apply = styled.button`
@@ -131,6 +135,16 @@ const Headpayment = styled.p`
   margin-left: 3%;
   font-weight: 600;
 `;
+const Stripe = styled.div`
+margin-left:30%;
+margin-top: 30%;
+`
+const Striped = styled(StripeCheckout)`
+width: 150px;
+height: 50px;
+margin: 10%;
+background-color:rgb(125, 197, 238);
+`
 
 const init = {
   email: "",
@@ -148,8 +162,8 @@ export const Passenger = init => {
   const [julyCpn, setJulyCpn] = React.useState(false);
   const [otherCpn, setOtherCpn] = React.useState(false);
   const [code, setCode] = React.useState("");
-	
-	// console.log(otherCpn);
+
+  // console.log(otherCpn);
 
   const [passdata, setPassData] = useState([]);
 
@@ -164,37 +178,42 @@ export const Passenger = init => {
   //   console.log(value);
   //   var new_total;
   if (julyCpn === true) {
-	  var total = value.total - 0.1 * value.total;
-	  console.log(total);
+    var total = value.total - 0.1 * value.total;
+    console.log(total);
 
     // 	  const obj = { ...value, total: Number(new_total) };
     //   console.log(obj);
     //   localStorage.setItem("details", JSON.stringify(obj));
   }
   if (otherCpn === true) {
-	  var total = value.total - 0.05 * value.total;
-	  console.log(total);
-	}
+    var total = value.total - 0.05 * value.total;
+    console.log(total);
+  }
 
   const handleRemoveCpn = () => {
-	  if (julyCpn === true) { setJulyCpn(false) }
-	  else if (otherCpn === true) { setOtherCpn(false)}
+    if (julyCpn === true) {
+      setJulyCpn(false);
+    } else if (otherCpn === true) {
+      setOtherCpn(false);
+    }
     var new_total = value?.total;
     console.log(new_total);
-    const obj = { ...value, total: value.total };
+    const obj = { ...value, final_price:value.total };
     console.log(obj);
     localStorage.setItem("details", JSON.stringify(obj));
-	};
-	let handleCoupon = () => {
-		if (code === "ABN7") {
-			var total = value.total - 0.07 * value.total;
-			console.log(total);
-		}
-	}
-	// const obj = { ...value, total: total };
-    // console.log(obj);
-    // localStorage.setItem("details", JSON.stringify(obj));
-  //   console.log(new_total);
+  };
+  let handleCoupon = () => {
+    if (code === "ABN7") {
+      var total = value.total - 0.07 * value.total;
+      console.log(total);
+    }
+    const obj = { ...value, final_total: total };
+    console.log(obj);
+    localStorage.setItem("details", JSON.stringify(obj));
+  };
+  const obj = { ...value, final_total: total };
+  console.log(obj);
+  localStorage.setItem("details", JSON.stringify(obj));
   //
   async function handleToken(token) {
     const response = await axios.post("https://aroul303.herokuapp.com/payment", { token, details });
@@ -288,7 +307,7 @@ export const Passenger = init => {
               setJulyCpn(e.target.checked);
             }}
           />
-          This July get upto 500/- discount : Use coupon JUL10 ,get Upto  RS.500/- instant discount
+          This July get upto 500/- discount : Use coupon JUL10 ,get Upto RS.500/- instant discount
           {julyCpn === true && (
             <div>
               <ClearIcon onClick={handleRemoveCpn} />
@@ -311,7 +330,14 @@ export const Passenger = init => {
           )}
         </Para>
         <Logindetails>
-          <CouponCode placeholder="Coupon Code" value={julyCpn === true ? "JUL10" : otherCpn === true ? "OTH5" :null} onChange={(e)=>{setCode(e.target.value)}} />
+          <CouponCode
+            placeholder="Coupon Code"
+            value={julyCpn === true ? "JUL10" : otherCpn === true ? "OTH5" : null}
+            onChange={e => {
+              setCode(e.target.value);
+					  }}
+					  disabled={julyCpn === true|| otherCpn === true}
+          />
           <Apply onClick={handleCoupon}>Apply</Apply>
         </Logindetails>
       </LoginBox>
@@ -382,15 +408,15 @@ export const Passenger = init => {
           <div className={style.paymentRight}>
             <br />
             <br />
-            <div onClick={handlePassengerdetails}>
-              <StripeCheckout
+            <Stripe onClick={handlePassengerdetails}>
+              <Striped
                 stripeKey="pk_test_51J2c5MSJXP7UJEsaX09X6zs7lMCN3XUj3PYnH67gO15T98UKO3njq0h54A4GMrp28KRX9J0nGgs5nKB0ddJVownD00w9wRgoZa"
                 token={handleToken}
                 price={value.total}
                 label="Make Payment"
                 className="redButton"
               />
-            </div>
+            </Stripe>
           </div>
         </div>
       </PaymentBox>
