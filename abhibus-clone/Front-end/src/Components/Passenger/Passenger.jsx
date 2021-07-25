@@ -130,6 +130,10 @@ const Headpayment = styled.p`
   margin-left: 3%;
   font-weight: 600;
 `;
+const Stripe = styled(StripeCheckout)`
+margin: 30px;
+margin-left: 30%;
+`
 
 export const Passenger = () => {
   const history = useHistory();
@@ -163,9 +167,7 @@ export const Passenger = () => {
       toast("Something went wrong", { type: "error" });
     }
   }
-  const details = localStorage.getItem("details");
-  let value = JSON.parse(details);
-  console.log(value);
+  
 
   // useEffect(() => {
   // 	if () {
@@ -297,7 +299,7 @@ export const Passenger = () => {
           <div className={style.paymentRight}>
             <br />
             <br />
-            <StripeCheckout
+            <Stripe
               stripeKey="pk_test_51J2c5MSJXP7UJEsaX09X6zs7lMCN3XUj3PYnH67gO15T98UKO3njq0h54A4GMrp28KRX9J0nGgs5nKB0ddJVownD00w9wRgoZa"
               token={handleToken}
               price={value.total}
