@@ -162,6 +162,9 @@ border: 1px solid rgb(202, 202, 202);
     display: flex;
 
 }
+.BusPartnerMenu>div>div:nth-child(2){
+    margin-top: 2px;
+}
 
 .DepartureType{
     padding: 10p 0 20px 0;
