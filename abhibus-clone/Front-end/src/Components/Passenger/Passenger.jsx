@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useHistory } from "react-router";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -131,8 +131,27 @@ const Headpayment = styled.p`
 	font-weight: 600;
 `;
 
-export const Passenger = () => {
+const init = {
+	email: "",
+	phone_number: "",
+	emergency_no: "",
+	name: "",
+	age: "",
+	gender: "",
+};
+
+export const Passenger = (init) => {
 	const history = useHistory();
+	const [data, setData] = useState(init);
+	const { email, phone_number, emergency_no, name, age, gender } = data;
+
+	const [passdata, setPassData] = useState([]);
+
+	const handleChange = (e) => {
+		let { name, value } = e.target;
+
+		setData({ ...data, [name]: value });
+	};
 
 	async function handleToken(token) {
 		const response = await axios.post(
@@ -161,6 +180,28 @@ export const Passenger = () => {
 	// 	// eslint-disable-next-line
 	// }, [ispay]);
 
+	const handlePassengerdetails = () => {
+		const payload = {
+			email,
+			mobile: phone_number,
+			emergency_Contact: emergency_no,
+			name,
+			age,
+			gender: gender,
+		};
+
+		return axios
+			.post("http://localhost:8000/passengers", payload)
+			.then((res) => {
+				
+				setPassData(res.data);
+				
+			})
+			.catch((er) => {
+				console.log(er);
+			});
+	};
+
 	return (
 		<div>
 			<Heading>Passenger Details</Heading>
@@ -178,9 +219,7 @@ export const Passenger = () => {
 					</a>
 				</Logindetails>
 			</LoginBox>
-			<DetailsBox>
-				
-			</DetailsBox>
+			<DetailsBox></DetailsBox>
 			<br />
 			<LoginBox>
 				<Para>
@@ -188,9 +227,27 @@ export const Passenger = () => {
 					email address and contact no. )
 				</Para>
 				<Logindetails>
-					<Input placeholder="Enter Your mailID"></Input>
-					<Input placeholder="Mobile No"></Input>
-					<Input placeholder="Emergency Contact Mobile No"></Input>
+					<Input
+						name="email"
+						onChange={handleChange}
+						value={email}
+						type="email"
+						placeholder="Enter Your mailID"
+					></Input>
+					<Input
+						type="text"
+						onChange={handleChange}
+						name="phone_number"
+						value={phone_number}
+						placeholder="Mobile No"
+					></Input>
+					<Input
+						type="text"
+						onChange={handleChange}
+						name="emergency_no"
+						value={emergency_no}
+						placeholder="Emergency Contact Mobile No"
+					></Input>
 				</Logindetails>
 			</LoginBox>
 			<br />
@@ -200,9 +257,21 @@ export const Passenger = () => {
 					the booking
 				</Para>
 				<Logindetails>
-					<Input placeholder="Enter Full Name"></Input>
-					<Input placeholder="Enter Age"></Input>
-					<Select name="gender">
+					<Input
+						type="text"
+						onChange={handleChange}
+						name="name"
+						value={name}
+						placeholder="Enter Full Name"
+					></Input>
+					<Input
+						type="number"
+						name="age"
+						onChange={handleChange}
+						value={age}
+						placeholder="Enter Age"
+					></Input>
+					<Select name="gender" onChange={handleChange}>
 						<option value="Select Gender">Select Gender</option>
 						<option value="Male">Male</option>
 						<option value="Fe-male">Fe-male</option>
@@ -317,17 +386,19 @@ export const Passenger = () => {
 						</div>
 					</div>
 
-					<div className={style.paymentRight}>
+					<div  className={style.paymentRight}>
 						<br />
 						<br />
-						<StripeCheckout
+						<div onClick={handlePassengerdetails} >
+							<StripeCheckout
+							
 							stripeKey="pk_test_51J2c5MSJXP7UJEsaX09X6zs7lMCN3XUj3PYnH67gO15T98UKO3njq0h54A4GMrp28KRX9J0nGgs5nKB0ddJVownD00w9wRgoZa"
 							token={handleToken}
 							price={value.total}
-							
 							label="Make Payment"
 							className="redButton"
 						/>
+						</div>
 					</div>
 				</div>
 			</PaymentBox>
