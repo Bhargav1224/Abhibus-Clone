@@ -1,7 +1,9 @@
-import React from "react";
 import styled from "styled-components";
-
 import { useHistory } from "react-router";
+import React, { useContext, useEffect } from "react";
+import StripeCheckout from "react-stripe-checkout";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const Heading = styled.h1`
 	font-size: 36px;
@@ -123,17 +125,38 @@ const Headpayment = styled.p`
 	color: rgb(34, 34, 34);
 	font-size: 14px;
 	text-size-adjust: 100%;
-    margin-left: 3%;
+	margin-left: 3%;
 `;
-
 
 export const Passenger = () => {
 	const history = useHistory();
 
-
+	async function handleToken(token) {
+		const response = await axios.post(
+			"https://aroul303.herokuapp.com/payment",
+			{ token, details }
+		);
+		const status = response.data.token.id;
+		const rate = response.data.details.plan;
+		history.push("/");
+		if (status) {
+			// setispay(true);
+			toast(`Successfully completed ${rate} subscription`, { type: "success" });
+			// history.push("/")
+		} else {
+			toast("Something went wrong", { type: "error" });
+		}
+	}
 	const details = localStorage.getItem("details");
 	let value = JSON.parse(details);
 	console.log(value);
+
+	// useEffect(() => {
+	// 	if () {
+	// 		history.push("/login");
+	// 	}
+	// 	// eslint-disable-next-line
+	// }, [ispay]);
 
 	return (
 		<div>
@@ -223,6 +246,14 @@ export const Passenger = () => {
 			<br />
 			<PaymentBox>
 				<Headpayment>Make Payment</Headpayment>
+				<StripeCheckout
+					stripeKey="pk_test_51J2c5MSJXP7UJEsaX09X6zs7lMCN3XUj3PYnH67gO15T98UKO3njq0h54A4GMrp28KRX9J0nGgs5nKB0ddJVownD00w9wRgoZa"
+					token={handleToken}
+					// price={price.price * 100}
+					// plan={price.plan}
+					label="Make Payment"
+					className="redButton"
+				/>
 			</PaymentBox>
 		</div>
 	);
