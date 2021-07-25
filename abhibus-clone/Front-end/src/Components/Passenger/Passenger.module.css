@@ -44,6 +44,7 @@
 .paymentRight{
     border: 1px solid rgb(143, 143, 143);
     width: 72%;
+    margin-left: 30px;
     
 }
 .paymentRight>div:first-child{
@@ -86,10 +87,7 @@
 .OnWards>div:nth-child(2)>div:first-child>img{
     height: 40px;
 }
-.busDetail{
-    /* border: 1px solid rebeccapurple; */
 
-}
 .busDetail>h5{
     margin-top: 0px;
     font-size: 14px;

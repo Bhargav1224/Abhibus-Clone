@@ -71,10 +71,10 @@ POST http://localhost:8000/passengers  HTTP/1.1
 content-type: application/json
 
 {
-    "email":"obul@gmail.com",
-    "mobile":9781271622,
-    "emergency_Contact":1978269112,
-    "name":"obul",
+    "email":"obul123@gmail.com",
+    "mobile":97812716123,
+    "emergency_Contact":1978269234,
+    "name":"obul321",
     "age":25,
     "gender":"Male"
 }
